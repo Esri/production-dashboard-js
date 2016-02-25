@@ -1,0 +1,17 @@
+{
+  "type": "Widget",
+  "title": "Workflow Manager Bar Chart",
+  "description": "",
+  "thumbnailPath": "WorkflowManagerBarWidgetIcon.png",
+  "useDataFromView": true,
+  "runtime": {
+    "path": "WorkflowManagerBarWidget.html"
+  },
+  "configuration": {
+    "path": "WorkflowManagerBarWidgetConfig.html",    
+    "requireDataSource": true,
+    "supportFeatureActions": false,
+    "showDescriptionInput": true
+  },
+  "credits": "By Esri (http://www.esri.com)"
+}

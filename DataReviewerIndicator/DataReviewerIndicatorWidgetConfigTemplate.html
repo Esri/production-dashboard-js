@@ -1,0 +1,108 @@
+<div> 
+    <div data-dojo-type="dijit/layout/TabContainer" style="width: 100%; height: 100%;" tabStrip="true">        
+        <div data-dojo-type="dijit/layout/ContentPane" title="Query" selected="true">
+            <div data-dojo-type="dojox/layout/TableContainer" data-dojo-props="cols:4" style="width: 100%;"  id="tc0">    
+                <select  data-dojo-type="dijit/form/Select" id="drsVariableValue" title="Data Reviewer Variable:" data-dojo-attach-point="drsVariableValue" colspan="4" data-dojo-attach-event="onChange:onDrsVariableValueChange" style="width:100%;"></select>
+            </div>
+            <br/><label>Filter:</label><br/> 
+            <div data-dojo-type="dijit/layout/ContentPane"  style="width:100%;display:inline">
+                   <select  data-dojo-type="dijit/form/Select" id="drsFieldName" style="width:40%;" data-dojo-attach-point="drsFieldName"data-dojo-attach-event="onChange:onDrsFieldNameChange" data-dojo-props="showLabels:false"></select>               
+                   <div data-dojo-type="dijit/form/TextBox" data-dojo-props="showLabels:false" style="width:2%;" readonly value="="></div>
+                   <select id="drsDistinctValues" data-dojo-props="showLabels:false" data-dojo-type="dijit/form/Select" style="width:40%;" data-dojo-attach-point="drsDistinctValues"></select>
+                   <button data-dojo-type="dijit/form/Button" id="addFilterBtn" data-dojo-attach-point="addFilterBtn" data-dojo-attach-event="onClick:onAddFilterBtnClick">Add</button>    
+            </div>
+            <br/><label>Added Filters:</label><br/>
+            <div  id="filterGrid" style="width:100%;height:100px;"></div>
+            <div data-dojo-type="dojox/layout/TableContainer" style="width: 100%;"  id="tc1">    
+                <select  data-dojo-type="dijit/form/Select" id="operationValue" title="Operation:" data-dojo-attach-point="operationValue" data-dojo-attach-event="onChange:onOperationValueChange"></select>
+            </div>
+        </div>
+        <div data-dojo-type="dijit/layout/ContentPane" title="Appearance" data-dojo-attach-point="appearanceTab" data-dojo-attach-event="onShow:onAppeanranceTabShow">
+            <div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="gutters:true">
+                <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'left'" style="width:45%">  
+                 <table>
+                    <tr>
+                      <td><label>Indicator Type:</label>
+                      </td>
+                      <td>
+                        <select id="indicatorType" data-dojo-type="dijit/form/Select"  title="Indicator Type:" style="width: 100%;" data-dojo-attach-point="indicatorType" data-dojo-attach-event="onChange:onIndicatorTypeChange"></select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label data-dojo-attach-point="targteValueLabel">Target Value:</label>
+                      </td>
+                      <td>
+                        <input  id="highTargetValue" data-dojo-type="dijit/form/TextBox" Title="Target Value:" data-dojo-attach-point="highTargetValue" style="width:40px;" value="0" data-dojo-attach-event="keyup:onHighTargetValueChange"/>
+                      </td>
+                    </tr>
+                    <tr style="display:;" data-dojo-attach-point="comparisonTypeRowSetting">
+                      <td>
+                        <label>Comparison: </label>
+                      </td>
+                      <td>
+                        <select id="comparisonType" data-dojo-type="dijit/form/Select"  title="Comparison :"  style="width: 100%;" data-dojo-attach-point="comparisonType" data-dojo-attach-event="onChange:onComparisonTypeChange"></select>
+                      </td>
+                    </tr>
+                    <tr style="display:none" data-dojo-attach-point="lowTargetValueRowSetting">
+                      <td>
+                        <label>Low Target Value:</label>
+                      </td>
+                      <td>
+                        <input  id="lowTargetValue" data-dojo-type="dijit/form/TextBox" Title="" data-dojo-attach-point="lowTargetValue" style="width:40px;" value="0" data-dojo-attach-event="keyup:onLowTargetValueChange"/>
+                      </td>
+                    </tr>
+                 </table>
+                 <table>
+                    <tr align="left" >
+                      <td>
+                        <label for="abovevalues">Above Values: </label>
+                      </td>
+                      <td>                        
+                        <span  data-dojo-id="aboveValuesColor" data-dojo-attach-point="aboveValuesColor"  data-dojo-type="esri/productiondashboard/ColorPickerWidget"></span>
+                      </td>
+                      <td >
+                        <div  data-dojo-attach-point="aboveValues_spw" data-dojo-type="esri/productiondashboard/SymbolPickerWidget" data-dojo-props="symbolFillColor:'blue', selectedSymbol:'face-up-arrow'"  data-dojo-attach-event="click:onAboveValues_spwChange"></div> 
+                       </td>
+                    </tr> 
+                    <tr align="left"  style="display:none" data-dojo-attach-point="betweenValuesSetting">
+                        <td>
+                           <label for="betweenvalues">Between Values:</label>
+                        </td>
+                          <td >                        
+                            <span  data-dojo-id="betweenValuesColor" data-dojo-attach-point="betweenValuesColor"  data-dojo-type="esri/productiondashboard/ColorPickerWidget"></span>
+                          </td>
+                          <td>
+                             <div  data-dojo-attach-point="betweenValues_spw" data-dojo-type="esri/productiondashboard/SymbolPickerWidget" data-dojo-props="symbolFillColor:'blue',selectedSymbol:'circle'" data-dojo-attach-event="click:onBetweenValues_spwChange"></div> 
+                          </td>
+                    </tr>
+                    <tr align="left" >
+                      <td>
+                          <label for="belowvalues">Below Values: </label>
+                      </td>
+                      <td align="right">                          
+                          <span  data-dojo-id="belowValuesColor" data-dojo-attach-point="belowValuesColor"  data-dojo-type="esri/productiondashboard/ColorPickerWidget"></span>
+                      </td>
+                      <td align="right">
+                          <div  data-dojo-attach-point="belowValues_spw" data-dojo-type="esri/productiondashboard/SymbolPickerWidget" data-dojo-props="symbolFillColor:'blue',selectedSymbol:'face-down-arrow'" data-dojo-attach-event="click:onBelowValues_spwChange"></div> 
+                      </td>   
+                    </tr>
+                  </table>
+                </div>
+                <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'" style="width:55%;overflow: hidden">
+                    <div data-dojo-type="dijit/layout/ContentPane" style="width:240px;height:314px;overflow: hidden">
+                      <span  data-dojo-attach-point="aboveValuesIndicator" data-dojo-type="esri/productiondashboard/PDIndicatorChart" data-dojo-props="svgHeight:'40%',symbolStyle:'face-up-arrow', fill_color:'blue'"></span>
+                      <span  data-dojo-attach-point="betweenValuesIndicator" data-dojo-type="esri/productiondashboard/PDIndicatorChart" data-dojo-props="svgHeight:'30%',symbolStyle:'circle', fill_color:'blue'" ></span>
+                      <span  data-dojo-attach-point="belowValuesIndicator" data-dojo-type="esri/productiondashboard/PDIndicatorChart" data-dojo-props="svgHeight:'40%',symbolStyle:'face-down-arrow', fill_color:'blue'" ></span>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+        <div data-dojo-type="dijit/layout/ContentPane" title="Connection">
+            <div data-dojo-type="dojox/layout/TableContainer" style="width: 100%;"  id="tc3">    
+                 <input id="drsUrl" data-dojo-type="dijit/form/ValidationTextBox"  placeHolder = "Type in Data Reviewer Service URL" data-dojo-props="required:true, regExp:dojox.validate.regexp.url" label="Data Reviewer Service:" data-dojo-attach-point="drsUrl" data-dojo-attach-event="onKeyUp:onDrsUrlChange" style="width:100%;" />
+            </div>           
+            <button data-dojo-type="dojox/form/BusyButton" data-dojo-attach-point="connectBtn" busyLabel="Connecting..." data-dojo-attach-event="onClick:onChangeDRSConnection">Connect</button>
+        </div>
+    </div> 
+</div>    

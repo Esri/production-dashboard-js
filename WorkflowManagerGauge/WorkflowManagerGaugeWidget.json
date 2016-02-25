@@ -1,0 +1,17 @@
+{
+  "type": "Widget",
+  "title": "Workflow Manager Gauge Chart",
+  "description": "",
+  "thumbnailPath": "WorkflowManagerGaugeWidgetIcon.png",
+  "useDataFromView": true,
+  "runtime": {
+    "path": "WorkflowManagerGaugeWidget.html"
+  },
+  "configuration": {
+    "path": "WorkflowManagerGaugeWidgetConfig.html",    
+    "requireDataSource": true,
+    "supportFeatureActions": false,
+    "showDescriptionInput": true
+  },
+  "credits": "By Esri (http://www.esri.com)"
+}

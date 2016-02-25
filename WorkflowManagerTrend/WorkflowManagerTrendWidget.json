@@ -1,0 +1,17 @@
+{
+  "type": "Widget",
+  "title": "Workflow Manager Trend Chart",
+  "description": "",
+  "thumbnailPath": "WorkflowManagerTrendWidgetIcon.png",
+  "useDataFromView": true,
+  "runtime": {
+    "path": "WorkflowManagerTrendWidget.html"
+  },
+  "configuration": {
+    "path": "WorkflowManagerTrendWidgetConfig.html",    
+    "requireDataSource": true,
+    "supportFeatureActions": false,
+    "showDescriptionInput": true
+  },
+  "credits": "By Esri (http://www.esri.com)"
+}

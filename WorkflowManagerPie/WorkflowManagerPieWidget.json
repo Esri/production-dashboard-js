@@ -1,0 +1,17 @@
+{
+  "type": "Widget",
+  "title": "Workflow Manager Pie Chart",
+  "description": "",
+  "thumbnailPath": "WorkflowManagerPieWidgetIcon.png",
+   "useDataFromView": true,
+  "runtime": {
+    "path": "WorkflowManagerPieWidget.html"
+  },
+  "configuration": {
+    "path": "WorkflowManagerPieWidgetConfig.html",    
+    "requireDataSource": true,
+    "supportFeatureActions": false,
+    "showDescriptionInput": true
+  },
+  "credits": "By Esri (http://www.esri.com)"
+}

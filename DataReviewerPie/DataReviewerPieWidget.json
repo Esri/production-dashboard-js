@@ -1,0 +1,17 @@
+{
+  "type": "Widget",
+  "title": "Data Reviewer Pie Chart",
+  "description": "",
+  "thumbnailPath": "DataReviewerPieWidgetIcon.png",
+  "useDataFromView": true,
+  "runtime": {
+    "path": "DataReviewerPieWidget.html"
+  },
+  "configuration": {
+    "path": "DataReviewerPieWidgetConfig.html",    
+    "requireDataSource": true,
+    "supportFeatureActions": false,
+    "showDescriptionInput": true
+  },
+  "credits": "By Esri (http://www.esri.com)"
+}

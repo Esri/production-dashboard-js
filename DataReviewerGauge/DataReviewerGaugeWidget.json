@@ -1,0 +1,17 @@
+{
+  "type": "Widget",
+  "title": "Data Reviewer Gauge Chart",
+  "description": "",
+  "thumbnailPath": "DataReviewerWidgetIcon.png",
+  "useDataFromView": true,
+  "runtime": {
+    "path": "DataReviewerGaugeWidget.html"
+  },
+  "configuration": {
+    "path": "DataReviewerGaugeWidgetConfig.html",    
+    "requireDataSource": true,
+    "supportFeatureActions": false,
+    "showDescriptionInput": true
+  },
+  "credits": "By Esri (http://www.esri.com)"
+}

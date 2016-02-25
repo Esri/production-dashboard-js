@@ -1,0 +1,17 @@
+{
+  "type": "Widget",
+  "title": "Data Reviewer Bar Chart",
+  "description": "",
+  "thumbnailPath": "DataReviewerBarWidgetIcon.png",
+  "useDataFromView": true,
+  "runtime": {
+    "path": "DataReviewerBarWidget.html"
+  },
+  "configuration": {
+    "path": "DataReviewerBarWidgetConfig.html",    
+    "requireDataSource": true,
+    "supportFeatureActions": false,
+    "showDescriptionInput": true
+  },
+  "credits": "By Esri (http://www.esri.com)"
+}

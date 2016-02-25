@@ -1,0 +1,39 @@
+<div>
+    <div data-dojo-type="dijit/layout/TabContainer" style="width: 100%; height: 100%;" tabStrip="true"> 
+        <div data-dojo-type="dijit/layout/ContentPane" title="Query" selected="true">
+            <div data-dojo-type="dojox/layout/TableContainer" data-dojo-props="cols:4" style="width: 100%;"  id="tc0">    
+                <select  data-dojo-type="dijit/form/Select" id="drsVariableValue" title="Data Reviewer Variable:" data-dojo-attach-point="drsVariableValue" colspan="4" data-dojo-attach-event="onChange:onDrsVariableValueChange" style="width:100%;"></select>
+            </div>
+            <br/><label>Filter:</label><br/> 
+            <div data-dojo-type="dijit/layout/ContentPane"  style="width:100%;display:inline">
+                   <select  data-dojo-type="dijit/form/Select" id="drsFieldName" style="width:40%;" data-dojo-attach-point="drsFieldName"data-dojo-attach-event="onChange:onDrsFieldNameChange" data-dojo-props="showLabels:false"></select>               
+                   <div data-dojo-type="dijit/form/TextBox" data-dojo-props="showLabels:false" style="width:2%;" readonly value="="></div>
+                   <select id="drsDistinctValues" data-dojo-props="showLabels:false" data-dojo-type="dijit/form/Select" style="width:40%;" data-dojo-attach-point="drsDistinctValues"></select>
+                   <button data-dojo-type="dijit/form/Button" id="addFilterBtn" data-dojo-attach-point="addFilterBtn" data-dojo-attach-event="onClick:onAddFilterBtnClick">Add</button>    
+            </div>
+            <br/><label>Added Filters:</label><br/>
+            <div  id="filterGrid" style="width:100%;height:100px;"></div>
+            
+        </div>
+        <div data-dojo-type="dijit/layout/ContentPane" title="Appearance">
+            <div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="gutters:true" >
+                <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'left'" style="width:45%">
+                    <strong><label>Label Placement:</label></strong>                    
+                    <br/><label for="onWedgeHoverRB"> Wedge Hover </label><input id="onWedgeHoverRB" data-dojo-type="dijit/form/RadioButton" data-dojo-attach-point="onWedgeHoverRB" data-dojo-props='name: "PieLabel", value:"hover"' data-dojo-attach-event="onClick:onPieLabelRBChange" />
+                    <label for="aroundPieRB"> Around Pie </label><input id="aroundPieRB" data-dojo-type="dijit/form/RadioButton" data-dojo-attach-point="aroundPieRB" data-dojo-props='name: "PieLabel", value:"around"' data-dojo-attach-event="onClick:onPieLabelRBChange" />
+                </div>
+                 <div data-dojo-type="dijit/layout/ContentPane"  data-dojo-props="region:'center'" style="width:55%" >
+                    <div id='chartPreviewCP'  data-dojo-attach-point="chartPreviewCP" style="height:100%;width:100%">
+                        <span  data-dojo-type="esri/productiondashboard/PDPieChart"  data-dojo-attach-point="chartPreview"  ></span>
+                    </div>
+                 </div>
+            </div>
+        </div>
+        <div data-dojo-type="dijit/layout/ContentPane" title="Connection">
+            <div data-dojo-type="dojox/layout/TableContainer" style="width: 100%;"  id="tc3">    
+                 <input id="drsUrl" data-dojo-type="dijit/form/ValidationTextBox"  placeHolder = "Type in Data Reviewer Service URL" data-dojo-props="required:true, regExp:dojox.validate.regexp.url" label="Data Reviewer Service:" data-dojo-attach-point="drsUrl" data-dojo-attach-event="onKeyUp:onDrsUrlChange" style="width:100%;" />
+            </div>           
+            <button data-dojo-type="dojox/form/BusyButton" data-dojo-attach-point="connectBtn" busyLabel="Connecting..." data-dojo-attach-event="onClick:onChangeDRSConnection">Connect</button>
+        </div> 
+    </div>
+</div>

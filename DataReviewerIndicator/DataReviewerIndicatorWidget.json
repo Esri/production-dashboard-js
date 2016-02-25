@@ -1,0 +1,17 @@
+{
+  "type": "Widget",
+  "title": " Data Reviewer Indicator Chart",
+  "description": "",
+  "thumbnailPath": "DataReviewerIndicatorWidgetIcon.png",
+  "useDataFromView": true,
+  "runtime": {
+    "path": "DataReviewerIndicatorWidget.html"
+  },
+  "configuration": {
+    "path": "DataReviewerIndicatorWidgetConfig.html",    
+    "requireDataSource": true,
+    "supportFeatureActions": false,
+    "showDescriptionInput": true
+  },
+  "credits": "By Esri (http://www.esri.com)"
+}

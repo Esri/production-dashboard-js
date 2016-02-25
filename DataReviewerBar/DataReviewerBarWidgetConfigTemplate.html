@@ -1,0 +1,55 @@
+<div style="z-index: 0;">
+    <style type="text/css">
+        .tabContainerCustom-labelCell{
+            text-align: left;
+            width:80%;
+        }
+        .tabContainerCustom-valueCell{
+          text-align: center;   
+        }
+    </style>
+	<div data-dojo-type="dijit/layout/TabContainer"	style="width:100%; height: 100%;" TabStrip="true" data-dojo-attach-point="tabContainerTab">		
+		<div data-dojo-type="dijit/layout/ContentPane" title="Query" selected="true" data-dojo-attach-point="queryTab">
+             <div data-dojo-type="dojox/layout/TableContainer" data-dojo-props="cols:4" style="width: 100%;"  id="tc0">    
+                <select  data-dojo-type="dijit/form/Select" id="drsVariableValue" title="Data Reviewer Variable:" data-dojo-attach-point="drsVariableValue" colspan="4" data-dojo-attach-event="onChange:onDrsVariableValueChange" style="width:100%;"></select>
+            </div>
+            <br/><label>Filter:</label><br/> 
+            <div data-dojo-type="dijit/layout/ContentPane"  style="width:100%;display:inline">
+                   <select  data-dojo-type="dijit/form/Select" id="drsFieldName" style="width:40%;" data-dojo-attach-point="drsFieldName"data-dojo-attach-event="onChange:onDrsFieldNameChange" data-dojo-props="showLabels:false"></select>               
+                   <div data-dojo-type="dijit/form/TextBox" data-dojo-props="showLabels:false" style="width:2%;" readonly value="="></div>
+                   <select id="drsDistinctValues" data-dojo-props="showLabels:false" data-dojo-type="dijit/form/Select" style="width:40%;" data-dojo-attach-point="drsDistinctValues"></select>
+                   <button data-dojo-type="dijit/form/Button" id="addFilterBtn" data-dojo-attach-point="addFilterBtn" data-dojo-attach-event="onClick:onAddFilterBtnClick">Add</button>    
+            </div>
+            <br/><label>Added Filters:</label><br/>
+            <div  id="filterGrid" style="width:100%;height:100px;"></div>			
+		</div>
+        <div data-dojo-type="dijit/layout/ContentPane" title="Appearance" data-dojo-attach-point="appearanceTab">
+            <div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="gutters:true">
+                <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'left'" style="width:45%;">
+                    <strong><label>On Horizontal Axis Display:</label></strong>
+                    <div data-dojo-type="dojox/layout/TableContainer" data-dojo-props="cols:1, orientation:'horiz', showLabels:true, customClass:'tabContainerCustom'"  id="tc1">
+                        <div id="showHorizontalGridLinesCB" data-dojo-id="showHorizontalGridLinesCB" style="text-align: end;" label="Grid Lines" data-dojo-type="dijit/form/CheckBox"  data-dojo-attach-point="showHorizontalGridLinesCB"  data-dojo-attach-event="onClick:onShowHorizontalGridLinesCBClick"> </div>     
+                        <div id="showHorizontalAxisCB" data-dojo-id="showHorizontalAxisCB" style="text-align: end;" label="Axis Labels" data-dojo-type="dijit/form/CheckBox"  data-dojo-attach-point="showHorizontalAxisCB"  data-dojo-attach-event="onClick:onShowHorizontalAxisClick"></div>
+                        <div id="labelOrientation" data-dojo-id="labelOrientation" style="text-align: end;" label="Orientation" data-dojo-type="dijit/form/Select"  data-dojo-attach-point="labelOrientation"  data-dojo-attach-event="onChange:onLabelOrientationChange"> </div>
+                        <div id="wraplabelCB" data-dojo-id="wraplabelCB" label="Wrap Text Labels" data-dojo-type="dijit/form/CheckBox"  data-dojo-attach-point="wraplabelCB"  data-dojo-attach-event="onClick:onWrapLabelCBClick"> </div>  
+                    </div>
+                     <br/>
+                     <strong><label>On Vertical Axis Display:</label></strong>
+                     <div data-dojo-type="dojox/layout/TableContainer" data-dojo-props="cols:1, orientation:'horiz', showLabels:true, customClass:'tabContainerCustom'"  id="tc2">
+                    <div id="showVerticalAxisCB" data-dojo-id="showVerticalAxisCB" label="Axis Labels" data-dojo-type="dijit/form/CheckBox"  data-dojo-attach-point="showVerticalAxisCB"  data-dojo-attach-event="onClick:onShowVerticalAxisCBClick"> </div>    
+                </div>
+                <label for="crpw">Color Ramp:</label><br/>
+                <span  id="crpw" data-dojo-id="crpw" data-dojo-attach-point="crpw"  data-dojo-type="esri/productiondashboard/ColorRampPickerWidget"></span> 
+                </div>
+                <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'" style="width:55%;overflow: hidden;" >
+                        <span  data-dojo-type="esri/productiondashboard/PDBarChart"  data-dojo-attach-point="chartPreview" data-dojo-props="svgHeight:330, svgWidth:240"></span>
+                </div>
+            </div>
+        </div>
+		<div data-dojo-type="dijit/layout/ContentPane" title="Connection" data-dojo-attach-point="connectionTab">
+			 <div data-dojo-type="dojox/layout/TableContainer" style="width: 100%;"  id="tc3">    
+                 <input id="drsUrl" data-dojo-type="dijit/form/ValidationTextBox"  placeHolder = "Type in Data Reviewer Service URL" label="Data Reviewer Service:" data-dojo-attach-point="drsUrl" data-dojo-props="required:true, regExp:dojox.validate.regexp.url" data-dojo-attach-event="onKeyUp:onDrsUrlChange" style="width:100%;" />
+            </div>
+             <button data-dojo-type="dojox/form/BusyButton" data-dojo-attach-point="connectBtn" busyLabel="Connecting..."  data-dojo-attach-event="onClick:onChangeDRSConnection">Connect</button>
+	</div>
+</div>

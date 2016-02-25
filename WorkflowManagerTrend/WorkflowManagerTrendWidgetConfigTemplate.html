@@ -1,0 +1,53 @@
+<div  style="z-index: 0;"> 
+    <style type="text/css">
+        .tabContainerCustom-labelCell{
+            text-align: left;
+            width:80%;
+        }
+        .tabContainerCustom-valueCell{
+          text-align: center;   
+        }
+    </style>
+    <div data-dojo-type="dijit/layout/TabContainer" style="width: 100%; height: 100%;" tabStrip="true">
+        <div data-dojo-type="dijit/layout/ContentPane" title="Query" data-dojo-attach-point="queryTab">
+            <div data-dojo-type="dojox/layout/TableContainer" data-dojo-props="cols:4" style="width: 100%;"  id="tc1">
+                <!-- <select  id="queryContainer" data-dojo-type="dijit/form/Select" colspan="4" label="Query Container:" style="width: 100%;" data-dojo-attach-point="queryContainer" data-dojo-attach-event="onChange:onQueryContainerChange"></select>
+                <select  id="queryNames" data-dojo-type="dijit/form/Select" label="Query Name:" colspan="4" style="width: 100%;" data-dojo-attach-point="queryNames" data-dojo-attach-event="onChange:onQueryNamesChange"></select> -->
+                <span  data-dojo-id="wmxQueries" label="Query:" data-dojo-type="esri/productiondashboard/WMXQueriesWidget" data-dojo-attach-point="WMXQueriesTree"></span>
+                <select id="calculationMethod"  data-dojo-type="dijit/form/Select" label="Operation:"  colspan="4"  data-dojo-attach-point="calculationMethod" data-dojo-attach-event="onChange:onCalculationMethodChange"></select>
+                 <select  id="groupByField" data-dojo-type="dijit/form/Select" label="Value Field:" colspan="2" style="width: 100%;" data-dojo-attach-point="groupByField" data-dojo-attach-event="onChange:onGroupByFieldChange"></select>
+                 <select id="gGroupDateBy"  data-dojo-type="dijit/form/Select" label="Choose" colspan="2"  style="width: 100%;" data-dojo-attach-point="gGroupDateBy" data-dojo-attach-event="onChange:onGgroupDateByChange"></select>                 
+                <select  id="valueField" data-dojo-type="dijit/form/Select" label="Normalize Field:" data-dojo-attach-point="valueField" colspan="2" style="width: 100%;" data-dojo-attach-event="onChange:onValueFieldChange"></select>
+                 <select id="vGroupDateBy"  data-dojo-type="dijit/form/Select"  label="Choose:" colspan="2" style="width: 100%;" data-dojo-attach-point="vGroupDateBy" data-dojo-attach-event="onChange:onVgroupDateByChange"></select>                
+            </div>           
+        </div>
+        <div data-dojo-type="dijit/layout/ContentPane" title="Appearance" data-dojo-attach-point="appearanceTab"> 
+         <div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="gutters:true">
+            <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'left'" style="width:45%">
+                <strong><label>On Horizontal Axis Dispaly:</label></strong>
+                <div data-dojo-type="dojox/layout/TableContainer" data-dojo-props="cols:1, orientation:'horiz', showLabels:true, customClass:'tabContainerCustom'"  id="tc2">
+                     <div id="showHorizontalGridLinesCB" data-dojo-id="showHorizontalGridLinesCB" style="text-align: end;" label="Grid Lines" data-dojo-type="dijit/form/CheckBox"  data-dojo-attach-point="showHorizontalGridLinesCB"  data-dojo-attach-event="onClick:onShowHorizontalGridLinesCBClick"> </div>     
+                     <div id="showHorizontalAxisCB" data-dojo-id="showHorizontalAxisCB" style="text-align: end;" label="Axis Labels" data-dojo-type="dijit/form/CheckBox"  data-dojo-attach-point="showHorizontalAxisCB"  data-dojo-attach-event="onClick:onShowHorizontalAxisClick"></div>
+                     <div id="labelOrientation" data-dojo-id="labelOrientation" style="text-align: end;" label="Orientation" data-dojo-type="dijit/form/Select" data-dojo-attach-point="labelOrientation"  data-dojo-attach-event="onChange:onLabelOrientationChange"> </div>                   
+                </div>
+                <br/>
+                <strong><label>On Vertical Axis Dispaly:</label></strong>
+                <div data-dojo-type="dojox/layout/TableContainer" data-dojo-props="cols:1, orientation:'horiz', showLabels:true, customClass:'tabContainerCustom'"  id="tc3">                    
+                    <div id="showVerticalAxisCB" data-dojo-id="showVerticalAxisCB" label="Axis Labels" data-dojo-type="dijit/form/CheckBox"  data-dojo-attach-point="showVerticalAxisCB"  data-dojo-attach-event="onClick:onShowVerticalAxisCBClick"> </div>                    
+                    <span  data-dojo-id="colorPicker" data-dojo-attach-point="colorPicker"  label="Trend line Color" data-dojo-type="esri/productiondashboard/ColorPickerWidget"></span>                        
+                </div>
+            </div>
+            <div data-dojo-type="dijit/layout/ContentPane"  data-dojo-props="region:'center'" style="width:55%;overflow: hidden;" >
+                    <span  data-dojo-type="esri/productiondashboard/PDTrendChart"  data-dojo-attach-point="chartPreview" data-dojo-props="svgHeight:314, svgWidth:240"></span>
+            </div>
+         </div>
+        </div>
+        <div data-dojo-type="dijit/layout/ContentPane" title="Connection" data-dojo-attach-point="connectionTab">
+            <div data-dojo-type="dojox/layout/TableContainer" data-dojo-props="cols:1" style="width: 100%;"  id="tc5">
+                <input id="wmxUrl" data-dojo-type="dijit/form/ValidationTextBox"  label="Workflow Manager Service:" placeHolder = "Type in Workflow Manager Service URL"  data-dojo-attach-point="wmxUrl" data-dojo-props="required:true, regExp:dojox.validate.regexp.url" data-dojo-attach-event="onKeyUp:onWMXUrlChange" style="width:100%;" />
+            <input id="wmxUsername" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-props="required:true" label="User ID:" placeHolder = "Type in Workflow Manager Username"  data-dojo-attach-point="wmxUsername" data-dojo-attach-event="onKeyUp:onWMXUsernameChange" style="width:100%;" />                
+            </div>
+            <button data-dojo-type="dojox/form/BusyButton" data-dojo-attach-point="connectBtn" busyLabel="Connecting..." data-dojo-attach-event="onClick:onChangeWMXConnection">Connect</button>       
+        </div>
+    </div>    
+</div>

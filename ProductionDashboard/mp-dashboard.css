@@ -1,0 +1,171 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:700|Exo+2:300,600);
+ 
+html, body {
+  font-family: "Exo 2", "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: 200;
+  font-size: .85em;
+  line-height: 1.2em;
+  background: #FFFFFF;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  color: #475B62;
+  /*overflow: hidden*/
+}
+ 
+strong {
+  font-weight: 600;
+}
+ 
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto Slab', "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: 700;
+  color: #CB4B19;
+  font-size: 1.75em;
+  margin-bottom: .4em;
+}
+ 
+p {
+  margin-bottom: .5em;
+}
+
+/***** PDPieChart starts here *****/
+.PDPieChart_Label {
+  border-style : solid;
+  border-width : thin;
+  border-color :black;  
+  color : black;
+  position : absolute;
+  padding : 0 10px;
+  background-color: white;              
+}
+/***** PDPieChart end here *****/
+
+/***** SymbolPickerWidget starts here ****/
+.SymbolPickerWidget {
+   position:inherit;
+   display:block; 
+   background-color: #FFFFFF;
+}
+.SymbolPickerWidgetContainer {
+   display:none; 
+   position:fixed;
+   border: 1px solid blue; 
+   width: 95px;
+   height: 100px;
+   overflow:auto;  
+   border-radius: 0;
+   background-color: #ECECEC;
+   border: solid 1px #f0c49B;
+   padding: 0;
+   z-index: 99999; 
+ /*    -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+     box-sizing: content-box;  */
+  }
+.SymbolPickerWidgetSymbol {
+  position:relative;
+  top:0;
+  left:0;
+  display:inline-block;   
+}
+/***** SymbolPickerWidget ends here ****/
+
+/***** ColorPickerWidget starts here ****/
+.ColorPickerWidget .selectedColorSwatch {
+  vertical-align: middle;
+  height: 25px;
+  width:  18px;
+  display: inline-block;
+  margin: 0px;
+  border-radius: 0px;
+  /*border: solid 3px;*/
+  /*border-color: transparent;*/
+  border-width : thin;
+  background-color: transparent;
+  border-color: red;
+}
+/***** ColorPickerWidget ends here ****/
+
+/***** ColorPickerWidget starts here ****/
+.ColorRampPickerWidget .cpSwatchRow{
+  font-size: 0px;
+  white-space: nowrap;
+}
+
+.ColorRampPickerWidget .cpSwatch{
+  vertical-align: middle;
+  height: 25px;
+  width:  18px;
+  display: inline-block;
+  margin: 0px;
+  border-radius: 0px;
+}
+/***** ColorPickerWidget ends here ****/
+
+/***** ColorPaletteWidget starts here ****/
+.ColorPaletteWidget .cpContainer {
+  display:inline-table; 
+  position:fixed;
+   cursor: pointer;
+  /*border: 1px solid blue;  */ 
+  overflow:hidden;  
+  border-radius: 0;
+  background-color: #ECECEC ;
+  /*border: solid 1px #f0c49B;*/
+  border-width : thin;
+  padding: 0;
+  /*z-index: 99999;
+     -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+     box-sizing: content*/
+}
+
+.ColorPaletteWidget .cpContainer .cpSwatchRow{
+  font-size: 0px;
+  white-space: nowrap;
+}
+
+.ColorPaletteWidget .cpContainer  .cpSwatch{
+  vertical-align: middle;
+  height: 25px;
+  width:  18px;
+  display: inline-block;
+  margin: 0px;
+  border-radius: 0px;
+  border: solid 1px;
+  border-color: transparent;
+  transition: width 2s;
+}
+
+.ColorPaletteWidget  .cpContainer .cpSwatch:hover {
+  border-color: white;
+}
+
+.ColorPaletteWidget .cpContainer .cpSwatchSelected{
+   border-color: yellow;
+}
+/***** ColorPaletteWidget ends here ****/
+/***** WMXQueriesWidget starts here ****/
+.WMXQueriesWidget {
+
+}
+
+.WMXQueriesWidget .wmxDropDownButton {
+
+}
+.WMXQueriesWidget .wmxDropDownButton .wmxLabel{
+  
+}
+.wmxQueriesTreeContainer {
+   border: 1px solid blue; 
+   width: 200px;
+   height: 200px;
+   overflow:auto;  
+   border-radius: 0;
+   background-color: #ECECEC;
+   border: solid 1px #f0c49B;
+   padding: 0;  
+}
+
+/***** WMXQueriesWidget ends here ****/

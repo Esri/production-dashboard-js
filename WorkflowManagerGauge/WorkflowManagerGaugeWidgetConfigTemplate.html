@@ -1,0 +1,65 @@
+<div style="z-index: 0">
+   	<div data-dojo-type="dijit/layout/TabContainer"	style="width: 100%; height: 100%;"	tabStrip="true">		
+		<div data-dojo-type="dijit/layout/ContentPane" title="Query" data-dojo-attach-point="queryTab" style="width: 100%; height: 100%;" >
+			<div data-dojo-type="dojox/layout/TableContainer" data-dojo-props="cols:4"   id="tc1">
+        <span  label="Query:" data-dojo-type="esri/productiondashboard/WMXQueriesWidget" data-dojo-attach-point="WMXQueriesTree"></span>
+        <select  id="valueField" title="Data Field:" data-dojo-type="dijit/form/Select" colspan="4"  style="width: 100%;" data-dojo-attach-point="valueField" data-dojo-attach-event="onChange:onValueFieldChange"></select>                    
+      </div>
+		</div>
+		<div data-dojo-type="dijit/layout/ContentPane" title="Appearance" data-dojo-attach-point="appearanceTab" data-dojo-attach-event="onShow:onAppearanceTabShow">
+			<div data-dojo-type="dijit/layout/BorderContainer">
+				<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'left'" style="width:45%">				    
+					<table>
+                        <tr>
+                           <td><lablel>Operation</lablel></td>
+                           <td><select id="calculationMethod"  data-dojo-type="dijit/form/Select" data-dojo-attach-point="calculationMethod"></select></td>
+                        </tr>
+                        <tr>
+                           <td><lablel>Minimum Value</lablel></td>
+                           <td><input id="minValueTB"  data-dojo-type="dijit/form/ValidationTextBox" data-dojo-props="required:true"  data-dojo-attach-point="minValueTB"/></td>
+                        </tr>
+                        <tr>
+                           <td><lablel>Maximum Value</lablel></td>
+                           <td><input id="maxValueTB" data-dojo-type="dijit/form/ValidationTextBox"  data-dojo-props="required:true" data-dojo-attach-point="maxValueTB"/></td>
+                        </tr>
+                    </table>
+                    <table>
+                                <tr>
+                                   <td><input id="includeThresholdValueCB" label="Include Threshold Value" data-dojo-attach-point="includeThresholdValueCB" data-dojo-type="dijit/form/CheckBox" data-dojo-attach-event="onClick:onIncludeThresholdValueChange" /></td>
+                                   <td><lablel>Include Threshold Value</lablel></td>
+                                   <td><input id="showLabelCB" label="Show Labels" data-dojo-id="showLabelCB" colspan="2" data-dojo-type="dijit/form/CheckBox"  data-dojo-attach-point="showLabelCB" data-dojo-attach-event="onClick:onShowLabelsClick"/></td>
+                                   <td><lablel>Show Labels</lablel></td>                                                                      
+                                </tr>
+                    </table>
+                    <table>
+                                <tr>
+                                   <td><lablel>Color</lablel></td>
+                                   <td><span  data-dojo-attach-point="colorPicker"  data-dojo-type="esri/productiondashboard/ColorPickerWidget"></span></td>
+                                   <td data-dojo-attach-point="thresholdColorCellLabel" style="visibility:hidden;"><label>Threshold Color</label></td>
+                                   <td data-dojo-attach-point="thresholdColorCellValue" style="visibility:hidden;"><span  data-dojo-attach-point="aboveThresholdColorPicker"  data-dojo-type="esri/productiondashboard/ColorPickerWidget"></span></td>
+                                </tr>
+                    </table>
+                    <table>
+                        <tr data-dojo-attach-point="thresholdRow" style="visibility: hidden;">
+                           <td><label>Threshold Value</label></td>
+                           <td><input id="thresholdTB" data-dojo-type="dijit/form/ValidationTextBox"  data-dojo-props="required:true" data-dojo-attach-point="thresholdTB"/><td>
+                         </tr>
+                     </table>
+        		</div>
+				<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'" style="width:55%;overflow: hidden;" >
+				  <div data-dojo-type="dijit/layout/ContentPane" style="width:220px;height:314px;overflow: hidden;">	
+				 	<span  data-dojo-type="esri/productiondashboard/PDGaugeChart"  data-dojo-attach-point="chartPreview" data-dojo-props="mode:'icon',svgHeight:'35%'"></span>
+				 	<span  data-dojo-type="esri/productiondashboard/PDGaugeChart"  data-dojo-attach-point="chartPreviewOverThreshold" data-dojo-props="mode:'icon',svgHeight:'35%'" style="visibility: hidden;"></span>
+				 </div>
+			    </div>
+			</div>
+		</div>		
+		<div data-dojo-type="dijit/layout/ContentPane" title="Connection" data-dojo-attach-point="connectionTab">
+		 <div data-dojo-type="dojox/layout/TableContainer" data-dojo-props="cols:1" style="width: 100%;"  id="tc3">
+            <input id="wmxUrl" data-dojo-type="dijit/form/ValidationTextBox" label="Workflow Manager Service:" placeHolder = "Type in Workflow Manager Service URL"  data-dojo-attach-point="wmxUrl" data-dojo-props="required:true, regExp:dojox.validate.regexp.url" data-dojo-attach-event="onKeyUp:onWMXUrlChange" style="width:100%;" />
+            <input id="wmxUsername" data-dojo-type="dijit/form/ValidationTextBox"  data-dojo-props="required:true"  label="User ID:" placeHolder = "Type in Workflow Manager Username"  data-dojo-attach-point="wmxUsername"  data-dojo-attach-event="onKeyUp:onWMXUsernameChange"  style="width:100%;" />                    
+          </div>
+          <button data-dojo-type="dojox/form/BusyButton" data-dojo-attach-point="connectBtn" busyLabel="Connecting..." data-dojo-attach-event="onClick:onChangeWMXConnection">Connect</button>
+        </div>  
+	</div>
+</div>

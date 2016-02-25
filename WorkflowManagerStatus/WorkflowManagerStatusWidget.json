@@ -1,0 +1,17 @@
+{
+  "type": "Widget",
+  "title": "Workflow Manager Status Chart",
+  "description": "",
+  "thumbnailPath": "WorkflowManagerStatusWidgetIcon.png",
+  "useDataFromView": true,
+  "runtime": {
+    "path": "WorkflowManagerStatusWidget.html"
+  },
+  "configuration": {
+    "path": "WorkflowManagerStatusWidgetConfig.html",    
+    "requireDataSource": true,
+    "supportFeatureActions": false,
+    "showDescriptionInput": true
+  },
+  "credits": "By Esri (http://www.esri.com)"
+}
