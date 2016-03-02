@@ -1,11 +1,13 @@
 # Production Dashboard
-ArcGIS Workflow Manager extends ArcGIS for Desktop by providing a centralized enterprise job management and tracking system to streamline your daily tasks. Achieve significant time savings and improve the efficiency of your GIS implementations by enforcing standardized and repeatable workflows across your organization. These widgets will allow management a view in to these workflows to ensure jobs being allocated properly, being done on schedule, and many other important factors to help ensure the organization is running efficiently.For more information on Workflow Manager, please visit: http://www.esri.com/software/arcgis/extensions/arcgis-workflow-manager.
+Production Dashboard is a grouping of custom Javascript widgets that you can apply directly to your Workflow Manager and Data Reviewer services to pull out information about the performance and efficiency of your organization.
 
-An important part of production is the need to make sure that your data is free of errors. With ArcGIS Data Reviewer, you can make data quality a component of your overall data management strategy. The Data Reviewer widgets allow management to get a high level glance at factors that relate to the quality of their data. The widgets can visualize factors such as numbers of data errors per department, number of high severity issues, and many more in to easily readable charts. For more information on Data Reviewer, please visit: http://www.esri.com/software/arcgis/extensions/arcgis-data-reviewer.
+ArcGIS Workflow Manager extends ArcGIS for Desktop by providing a centralized enterprise job management and tracking system to streamline your daily tasks. The Workflow Manager widgets for Operations Dashboard will allow management a view in to these workflows to ensure jobs being allocated properly, being done on schedule, and many other important factors to help ensure the organization is running efficiently.For more information on Workflow Manager, please visit: http://www.esri.com/software/arcgis/extensions/arcgis-workflow-manager.
 
-For more information on Operations Dashboard, please visit: http://doc.arcgis.com/en/operations-dashboard/
+An important part of production is the need to make sure that your data is free of errors. With ArcGIS Data Reviewer, you can make data quality a component of your overall data management strategy. The Data Reviewer widgets for Operations Dashboard allow management to get a high level glance at factors that relate to the quality of their data. The widgets can visualize factors such as numbers of data errors per department, number of high severity issues, and many more in to easily readable charts. For more information on Data Reviewer, please visit: http://www.esri.com/software/arcgis/extensions/arcgis-data-reviewer.
 
-For more on how you can create your own custom widgets, please visit: http://doc.arcgis.com/en/operations-dashboard/windows-desktop/author/custom-addins.htm
+Operations Dashboard for ArcGIS gives the ability to monitor activities and assess the status and performance of your daily operations. For more information on Operations Dashboard, please visit: http://doc.arcgis.com/en/operations-dashboard/
+
+For more on how you can extend Operations Dashboard for ArcGIS and create widgets like these, please visit: http://doc.arcgis.com/en/operations-dashboard/windows-desktop/author/custom-addins.htm
 
 Requirements
 ---
