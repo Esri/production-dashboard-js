@@ -11,13 +11,16 @@ Operations Dashboard for ArcGIS gives the ability to monitor activities and asse
 
 For more on how you can extend Operations Dashboard for ArcGIS and create widgets like these, please visit: http://doc.arcgis.com/en/operations-dashboard/windows-desktop/author/custom-addins.htm
 
+Currently, there are two options to deploy these widgets.  You may host them on your own web server and add them as items to Portal or ArcGIS online as items.  For more information, please visit: https://developers.arcgis.com/javascript/jshelp/operations-dashboard-extensibility-overview.html.
+
 Requirements
 ---
-All products must be 10.3.1 or above.
-  1. ArcGIS Server 
-  2. Workflow Manager Server 
-  3. Data Reviewer Server 
-  4. Operations Dashboard 
+  1. ArcGIS Server 10.3.x or above
+  2. Workflow Manager Server 10.3.x or above
+  3. Data Reviewer Server 10.3.x or above
+  4. Operations Dashboard for ArcGIS 10.3.x or above
+  5. Portal for ArcGIS 10.4 or ArcGIS Online Organizational Account 
+  6. Web Server
 
 Included Widgets
 ---
