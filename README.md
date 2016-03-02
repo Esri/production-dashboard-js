@@ -1,5 +1,7 @@
 # Production Dashboard
-A collection of Javascript Operations Dashboard widgets that utilize Workflow Manager Server and Data Reviewer Server services to visualize data about your organization.
+ArcGIS Workflow Manager extends ArcGIS for Desktop by providing a centralized enterprise job management and tracking system to streamline your daily tasks. Achieve significant time savings and improve the efficiency of your GIS implementations by enforcing standardized and repeatable workflows across your organization. These widgets will allow management a view in to these workflows to ensure jobs being allocated properly, being done on schedule, and many other important factors to help ensure the organization is running efficiently.For more information on Workflow Manager, please visit: http://www.esri.com/software/arcgis/extensions/arcgis-workflow-manager.
+
+An important part of production is the need to make sure that your data is free of errors. With ArcGIS Data Reviewer, you can make data quality a component of your overall data management strategy. The Data Reviewer widgets allow management to get a high level glance at factors that relate to the quality of their data. The widgets can visualize factors such as numbers of data errors per department, number of high severity issues, and many more in to easily readable charts. For more information on Data Reviewer, please visit: http://www.esri.com/software/arcgis/extensions/arcgis-data-reviewer.
 
 For more information on Operations Dashboard, please visit: http://doc.arcgis.com/en/operations-dashboard/
 
