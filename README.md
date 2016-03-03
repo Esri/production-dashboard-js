@@ -15,10 +15,10 @@ Currently, there are two options to deploy these widgets.  You may host them on 
 
 Requirements
 ---
-  1. ArcGIS Server 10.3.x or above
-  2. Workflow Manager Server 10.3.x or above
-  3. Data Reviewer Server 10.3.x or above
-  4. Operations Dashboard for ArcGIS 10.3.x or above
+  1. ArcGIS Server 10.3.1 or above
+  2. Workflow Manager Server 10.3.1 or above
+  3. Data Reviewer Server 10.3.1 or above
+  4. Operations Dashboard for ArcGIS 10.3.1 or above
   5. Portal for ArcGIS 10.4 or ArcGIS Online Organizational Account 
   6. Web Server
 
@@ -42,7 +42,7 @@ Esri welcomes contributions from anyone and everyone. Please see our guidelines 
 Licensing
 ---
 
-Copyright 2015 Esri
+Copyright 2016 Esri
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
