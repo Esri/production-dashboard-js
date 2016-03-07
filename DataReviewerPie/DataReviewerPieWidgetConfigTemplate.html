@@ -22,10 +22,9 @@
                     <br/><label for="onWedgeHoverRB"> Wedge Hover </label><input id="onWedgeHoverRB" data-dojo-type="dijit/form/RadioButton" data-dojo-attach-point="onWedgeHoverRB" data-dojo-props='name: "PieLabel", value:"hover"' data-dojo-attach-event="onClick:onPieLabelRBChange" />
                     <label for="aroundPieRB"> Around Pie </label><input id="aroundPieRB" data-dojo-type="dijit/form/RadioButton" data-dojo-attach-point="aroundPieRB" data-dojo-props='name: "PieLabel", value:"around"' data-dojo-attach-event="onClick:onPieLabelRBChange" />
                 </div>
-                 <div data-dojo-type="dijit/layout/ContentPane"  data-dojo-props="region:'center'" style="width:55%" >
-                    <div id='chartPreviewCP'  data-dojo-attach-point="chartPreviewCP" style="height:100%;width:100%">
-                        <span  data-dojo-type="esri/productiondashboard/PDPieChart"  data-dojo-attach-point="chartPreview"  ></span>
-                    </div>
+                 <div data-dojo-type="dijit/layout/ContentPane"  data-dojo-props="region:'center'" style="width:55%;overflow:hidden;" >
+                        <span  data-dojo-type="esri/productiondashboard/D3Charts/D3PieChart"  data-dojo-attach-point="chartPreview"   data-dojo-props="svgHeight:314, svgWidth:235"></span>
+                 
                  </div>
             </div>
         </div>

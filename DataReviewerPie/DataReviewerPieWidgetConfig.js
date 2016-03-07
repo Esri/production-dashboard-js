@@ -1,20 +1,18 @@
-/**
- * COPYRIGHT 2013 ESRI
- *
- * TRADE SECRETS: ESRI PROPRIETARY AND CONFIDENTIAL
- * Unpublished material - all rights reserved under the
- * Copyright Laws of the United States and applicable international
- * laws, treaties, and conventions.
+/* 
+2  * Copyright 2016 Esri 
+3  * 
+4  * Licensed under the Apache License, Version 2.0 (the "License"); 
+5  * you may not use this file except in compliance with the License. 
+6  * You may obtain a copy of the License at 
+7  *   http://www.apache.org/licenses/LICENSE-2.0 
+8  
+9  * Unless required by applicable law or agreed to in writing, software 
+10  * distributed under the License is distributed on an "AS IS" BASIS, 
+11  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+12  * See the License for the specific language governing permissions and 
+13  * limitations under the License. 
+14  */
 
- * For additional information, contact:
- * Environmental Systems Research Institute, Inc.
- * Attn: Contracts and Legal Services Department
- * 380 New York Street
- * Redlands, California, 92373
- * USA
-
- * email: contracts@esri.com
- */
  define([
   "dojo/_base/declare",
   "dojo/_base/lang",
@@ -41,9 +39,8 @@
   "dojox/grid/DataGrid",
   "esri/opsdashboard/WidgetConfigurationProxy",
   "esri/productiondashboard/PDInit",
-  "esri/productiondashboard/DRSRequest",
-  "esri/productiondashboard/PDChartEnum",
-  "esri/productiondashboard/PDPieChart",
+  "esri/productiondashboard/DRSRequest",  
+  "esri/productiondashboard/D3Charts/D3PieChart",
   "dojo/domReady!" 
 
 ], function (declare, 
@@ -71,8 +68,7 @@
              DataGrid,            
              WidgetConfigurationProxy, 
              PDInit,
-             DRSRequest,
-             PDChartEnum,
+             DRSRequest,             
              PDPieChart
             ){
 
@@ -95,9 +91,9 @@
        
 	    		postCreate: function(){   
 	    			this.inherited(arguments);
-            var h = this.chartPreviewCP.clientHeight  *.88 - 40, w = this.chartPreviewCP.clientWidth  *.88 - 40;
+            /*var h = this.chartPreviewCP.clientHeight  *.88 - 40, w = this.chartPreviewCP.clientWidth  *.88 - 40;
             this.chartPreview.svgHeight = h;
-            this.chartPreview.svgWidth = w;            
+            this.chartPreview.svgWidth = w;            */
 	    		},
 
           dataSourceSelectionChanged: function (dataSourceProxy, dataSourceConfig) {            
@@ -373,14 +369,13 @@
           },
 
           previewChart : function(){
-            this.chartPreview.container = this.chartPreviewCP;
-            this.chartPreview.margin = {top: 0, right: 0, bottom: 0, left: 0},
-            this.chartPreview.svgType = PDChartEnum.PIE_CHART;
+            //this.chartPreview.container = this.chartPreviewCP;
+            this.chartPreview.margin = {top: 0, right: 0, bottom: 0, left: 0},            
             this.chartPreview.donut_factor = this.widgetConfig.chartConfig.donut_factor;
             this.chartPreview.showLabelTotal = this.widgetConfig.chartConfig.showLabelTotal;
             this.chartPreview.placeWedgeLabel = this.widgetConfig.chartConfig.placeWedgeLabel;
             this.chartPreview.labelContent = this.widgetConfig.chartConfig.labelContent;
-            this.chartPreview.showChart(this.chartPreviewCP);          
+            this.chartPreview.showChart();          
           },
 
           onDrsUrlChange: function(e){

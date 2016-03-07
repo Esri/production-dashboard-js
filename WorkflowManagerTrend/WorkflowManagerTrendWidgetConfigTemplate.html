@@ -11,8 +11,6 @@
     <div data-dojo-type="dijit/layout/TabContainer" style="width: 100%; height: 100%;" tabStrip="true">
         <div data-dojo-type="dijit/layout/ContentPane" title="Query" data-dojo-attach-point="queryTab">
             <div data-dojo-type="dojox/layout/TableContainer" data-dojo-props="cols:4" style="width: 100%;"  id="tc1">
-                <!-- <select  id="queryContainer" data-dojo-type="dijit/form/Select" colspan="4" label="Query Container:" style="width: 100%;" data-dojo-attach-point="queryContainer" data-dojo-attach-event="onChange:onQueryContainerChange"></select>
-                <select  id="queryNames" data-dojo-type="dijit/form/Select" label="Query Name:" colspan="4" style="width: 100%;" data-dojo-attach-point="queryNames" data-dojo-attach-event="onChange:onQueryNamesChange"></select> -->
                 <span  data-dojo-id="wmxQueries" label="Query:" data-dojo-type="esri/productiondashboard/WMXQueriesWidget" data-dojo-attach-point="WMXQueriesTree"></span>
                 <select id="calculationMethod"  data-dojo-type="dijit/form/Select" label="Operation:"  colspan="4"  data-dojo-attach-point="calculationMethod" data-dojo-attach-event="onChange:onCalculationMethodChange"></select>
                  <select  id="groupByField" data-dojo-type="dijit/form/Select" label="Value Field:" colspan="2" style="width: 100%;" data-dojo-attach-point="groupByField" data-dojo-attach-event="onChange:onGroupByFieldChange"></select>
@@ -38,7 +36,9 @@
                 </div>
             </div>
             <div data-dojo-type="dijit/layout/ContentPane"  data-dojo-props="region:'center'" style="width:55%;overflow: hidden;" >
-                    <span  data-dojo-type="esri/productiondashboard/PDTrendChart"  data-dojo-attach-point="chartPreview" data-dojo-props="svgHeight:314, svgWidth:240"></span>
+                    <span data-dojo-type="esri/productiondashboard/D3Charts/D3TrendChart"  data-dojo-attach-point="chartPreview" data-dojo-props="svgHeight:309, svgWidth:235"></span>
+
+
             </div>
          </div>
         </div>

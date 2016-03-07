@@ -1,20 +1,17 @@
-/**
- * COPYRIGHT 2013 ESRI
- *
- * TRADE SECRETS: ESRI PROPRIETARY AND CONFIDENTIAL
- * Unpublished material - all rights reserved under the
- * Copyright Laws of the United States and applicable international
- * laws, treaties, and conventions.
-
- * For additional information, contact:
- * Environmental Systems Research Institute, Inc.
- * Attn: Contracts and Legal Services Department
- * 380 New York Street
- * Redlands, California, 92373
- * USA
-
- * email: contracts@esri.com
- */
+/* 
+2  * Copyright 2016 Esri 
+3  * 
+4  * Licensed under the Apache License, Version 2.0 (the "License"); 
+5  * you may not use this file except in compliance with the License. 
+6  * You may obtain a copy of the License at 
+7  *   http://www.apache.org/licenses/LICENSE-2.0 
+8  
+9  * Unless required by applicable law or agreed to in writing, software 
+10  * distributed under the License is distributed on an "AS IS" BASIS, 
+11  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+12  * See the License for the specific language governing permissions and 
+13  * limitations under the License. 
+14  */
 
  define([
   "dojo/_base/declare",
@@ -25,14 +22,13 @@
   "esri/productiondashboard/WMXEnum",
   "esri/productiondashboard/WMXRequest",
   "esri/productiondashboard/WMXChartDatasource",
-  "esri/productiondashboard/PDChartEnum",
-  "esri/productiondashboard/PDPieChart",
+  "esri/productiondashboard/D3Charts/D3PieChart",
   "dojo/domReady!"  
-], function (declare, lang, _WidgetBase, _TemplatedMixin,  WidgetProxy, WMXEnum, WMXRequest, WMXChartDS, PDChartEnum, pdChart) {
+], function (declare, lang, _WidgetBase, _TemplatedMixin,  WidgetProxy, WMXEnum, WMXRequest, WMXChartDS, pdChart) {
 
   return declare("WorkflowManagerBarWidget", [_WidgetBase, _TemplatedMixin, WidgetProxy], {      
-    templateString: '<div  data-dojo-attach-point="chartPreview"  style="overflow:hidden;"></div>',
-    margin : {top: 05, right: 05, bottom: 05, left: 05},   
+    templateString: '<div data-dojo-attach-point="chartPreview"  style="height:100%; width:100%;overflow:hidden;"></div>',
+    margin : {top: 10, right: 10, bottom: 15, left: 10},   
     wmxRequest: null,
     wmxChartDS: null,
     widgetConfig: null,
@@ -46,13 +42,11 @@
       this.chart = new pdChart().placeAt(this.chartPreview);     
     },
     
-
     visualizeIt: function(){
 
       var self = lang.hitch(this);
       this.chart.data = this.data; 
-      this.chart.margin = this.margin,
-      this.chart.svgType = PDChartEnum.PIE_CHART;
+      //this.chart.margin = this.margin,     
       this.chart.donut_factor = this.widgetConfig.chartConfig.donut_factor;
       this.chart.showLabelTotal = this.widgetConfig.chartConfig.showLabelTotal;
       this.chart.placeWedgeLabel = this.widgetConfig.chartConfig.placeWedgeLabel;

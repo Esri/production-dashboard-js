@@ -10,46 +10,46 @@
 			<div data-dojo-type="dijit/layout/BorderContainer">
 				<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'left'" style="width:45%">				    
 					<table>
-                        <tr>
-                           <td><lablel>Operation</lablel></td>
-                           <td><select id="calculationMethod"  data-dojo-type="dijit/form/Select" data-dojo-attach-point="calculationMethod"></select></td>
-                        </tr>
-                        <tr>
-                           <td><lablel>Minimum Value</lablel></td>
-                           <td><input id="minValueTB"  data-dojo-type="dijit/form/ValidationTextBox" data-dojo-props="required:true"  data-dojo-attach-point="minValueTB"/></td>
-                        </tr>
-                        <tr>
-                           <td><lablel>Maximum Value</lablel></td>
-                           <td><input id="maxValueTB" data-dojo-type="dijit/form/ValidationTextBox"  data-dojo-props="required:true" data-dojo-attach-point="maxValueTB"/></td>
-                        </tr>
-                    </table>
-                    <table>
-                                <tr>
-                                   <td><input id="includeThresholdValueCB" label="Include Threshold Value" data-dojo-attach-point="includeThresholdValueCB" data-dojo-type="dijit/form/CheckBox" data-dojo-attach-event="onClick:onIncludeThresholdValueChange" /></td>
-                                   <td><lablel>Include Threshold Value</lablel></td>
-                                   <td><input id="showLabelCB" label="Show Labels" data-dojo-id="showLabelCB" colspan="2" data-dojo-type="dijit/form/CheckBox"  data-dojo-attach-point="showLabelCB" data-dojo-attach-event="onClick:onShowLabelsClick"/></td>
-                                   <td><lablel>Show Labels</lablel></td>                                                                      
-                                </tr>
-                    </table>
-                    <table>
-                                <tr>
-                                   <td><lablel>Color</lablel></td>
-                                   <td><span  data-dojo-attach-point="colorPicker"  data-dojo-type="esri/productiondashboard/ColorPickerWidget"></span></td>
-                                   <td data-dojo-attach-point="thresholdColorCellLabel" style="visibility:hidden;"><label>Threshold Color</label></td>
-                                   <td data-dojo-attach-point="thresholdColorCellValue" style="visibility:hidden;"><span  data-dojo-attach-point="aboveThresholdColorPicker"  data-dojo-type="esri/productiondashboard/ColorPickerWidget"></span></td>
-                                </tr>
-                    </table>
-                    <table>
-                        <tr data-dojo-attach-point="thresholdRow" style="visibility: hidden;">
-                           <td><label>Threshold Value</label></td>
-                           <td><input id="thresholdTB" data-dojo-type="dijit/form/ValidationTextBox"  data-dojo-props="required:true" data-dojo-attach-point="thresholdTB"/><td>
-                         </tr>
-                     </table>
-        		</div>
+           <tr>
+               <td><lablel>Operation</lablel></td>
+               <td><select id="calculationMethod"  data-dojo-type="dijit/form/Select" data-dojo-attach-point="calculationMethod"></select></td>
+            </tr>
+            <tr>
+               <td><lablel>Minimum Value</lablel></td>
+               <td><input id="minValueTB"  data-dojo-type="dijit/form/ValidationTextBox" style="width:80px;" data-dojo-props="required:true"  data-dojo-attach-point="minValueTB"/></td>
+            </tr>
+            <tr>
+               <td><lablel>Maximum Value</lablel></td>
+               <td><input id="maxValueTB" data-dojo-type="dijit/form/ValidationTextBox"  style="width:80px;" data-dojo-props="required:true" data-dojo-attach-point="maxValueTB"/></td>
+            </tr>
+          </table>
+          <table>
+                      <tr>
+                         <td><input id="includeThresholdValueCB" label="Include Threshold Value" data-dojo-attach-point="includeThresholdValueCB" data-dojo-type="dijit/form/CheckBox" data-dojo-attach-event="onClick:onIncludeThresholdValueChange" /></td>
+                         <td><lablel>Include Threshold Value</lablel></td>
+                         <td><input id="showLabelCB" label="Show Labels" data-dojo-id="showLabelCB" colspan="2" data-dojo-type="dijit/form/CheckBox"  data-dojo-attach-point="showLabelCB" data-dojo-attach-event="onClick:onShowLabelsClick"/></td>
+                         <td><lablel>Show Labels</lablel></td>                                                                      
+                      </tr>
+          </table>
+          <table>
+                      <tr>
+                         <td><lablel>Color</lablel></td>
+                         <td><span  data-dojo-attach-point="colorPicker"  data-dojo-type="esri/productiondashboard/ColorPickerWidget"></span></td>
+                         <td data-dojo-attach-point="thresholdColorCellLabel" style="visibility:hidden;"><label>Threshold Color</label></td>
+                         <td data-dojo-attach-point="thresholdColorCellValue" style="visibility:hidden;"><span  data-dojo-attach-point="aboveThresholdColorPicker"  data-dojo-type="esri/productiondashboard/ColorPickerWidget"></span></td>
+                      </tr>
+          </table>
+          <table>
+              <tr data-dojo-attach-point="thresholdRow" style="visibility: hidden;">
+                 <td><label>Threshold Value</label></td>
+                 <td><input id="thresholdTB" data-dojo-type="dijit/form/ValidationTextBox"  style="width:80px;" data-dojo-props="required:true" data-dojo-attach-point="thresholdTB"/><td>
+               </tr>
+           </table>
+        	</div>
 				<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'" style="width:55%;overflow: hidden;" >
 				  <div data-dojo-type="dijit/layout/ContentPane" style="width:220px;height:314px;overflow: hidden;">	
-				 	<span  data-dojo-type="esri/productiondashboard/PDGaugeChart"  data-dojo-attach-point="chartPreview" data-dojo-props="mode:'icon',svgHeight:'35%'"></span>
-				 	<span  data-dojo-type="esri/productiondashboard/PDGaugeChart"  data-dojo-attach-point="chartPreviewOverThreshold" data-dojo-props="mode:'icon',svgHeight:'35%'" style="visibility: hidden;"></span>
+				 	  <span  data-dojo-type="esri/productiondashboard/D3Charts/D3GaugeChart"  data-dojo-attach-point="chartPreview" data-dojo-props="mode:'icon',svgHeight:'35%'"></span>
+				 	  <span  data-dojo-type="esri/productiondashboard/D3Charts/D3GaugeChart"  data-dojo-attach-point="chartPreviewOverThreshold" data-dojo-props="mode:'icon',svgHeight:'35%'" style="visibility: hidden;"></span>
 				 </div>
 			    </div>
 			</div>
