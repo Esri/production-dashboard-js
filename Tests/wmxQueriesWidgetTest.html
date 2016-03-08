@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>WMX Queries Widget Declarative Testing</title>    
+    <link rel="stylesheet" href="http://js.arcgis.com/3.16/dijit/themes/claro/claro.css">  
+    <link rel="stylesheet" href="http://js.arcgis.com/3.16/esri/css/esri.css">
+    <link rel="stylesheet" href="./../ProductionDashboard/mp-dashboard.css">  
+ </head>
+
+<script>   
+  var extensionLocation = location.pathname.replace(/\/[^/]+$/, ''); 
+  var dojoConfig = {
+    async: true,
+  //  parseOnLoad: true, 
+    paths: {
+      "extension": extensionLocation,
+      "esri/productiondashboard": extensionLocation + "/../ProductionDashboard"  
+    }    
+  };
+
+  </script> 
+  <script src="http://js.arcgis.com/3.16/"></script>
+  <script>
+    require(
+    [ 
+      "dojo/parser",
+      "dojox/layout/TableContainer",
+      "dijit/form/ValidationTextBox",
+      "dojox/validate/regexp",
+      "dijit/form/DropDownButton",
+      "esri/productiondashboard/WMXRequest",
+      "esri/productiondashboard/WMXQueriesWidget",      
+      "dojo/domReady!"
+    ], function(parser, DropDownbutton, WMXQueriesWidget){
+       parser.parse();
+    });
+
+    function loadWmxQueries(){
+         request.url = wmxUrl.get('value');
+         wmxQueries.wmxRequest = request;
+         wmxQueries.load();
+    }
+
+    function setSelectedNode(id){
+      wmxQueries.setSelectedQuery(id);
+
+    }
+ </script>
+  <body class="claro">
+    <h1>WMX Queries Widget Declarative Testing</h1>
+     
+     <button onclick="loadWmxQueries()">Reload WMX Query Tree</button>
+    <!-- <button onclick="setSelectedNode('7')">Select Node query 7</button>
+    <button onclick="setSelectedNode(-1)">Select to unknown node</button> -->
+     <div data-dojo-type="dojox/layout/TableContainer" data-dojo-props="cols:1, orientation:'horiz', showLabels:true" >
+        <div data-dojo-type="dojox/layout/TableContainer" style="width: 100%;"  id="tc3">    
+          <input data-dojo-type="dijit/form/ValidationTextBox"  placeHolder = "Type in WMX Service URL" label="WMX Service URL:" data-dojo-id="wmxUrl" data-dojo-props="required:true, regExp:dojox.validate.regexp.url" value='https://ogcedit.esri.com/pmediting/rest/services/MyWorkflowManagerService/WMServer' style="width:100%;"  />
+     </div>
+ 
+    <div data-dojo-type="esri/productiondashboard/WMXRequest" data-dojo-id="request" data-dojo-props="url:'https://ogcedit.esri.com/pmediting/rest/services/MyWorkflowManagerService/WMServer'"></div>
+    <span  data-dojo-id="wmxQueries" data-dojo-type="esri/productiondashboard/WMXQueriesWidget" data-dojo-props="wmxRequest:request" ></span>
+  </body>
+</html>
