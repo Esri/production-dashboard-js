@@ -22,8 +22,6 @@
  "dijit/_WidgetsInTemplateMixin",
  "esri/productiondashboard/d3.min",
  "esri/productiondashboard/D3Charts/D3ChartEnum"
-// "dojo/ready",
- 
  ], function (declare,
               lang,              
               dom, 
@@ -63,8 +61,7 @@
       widthFactor                   : 1,
       heightFactor                  : 1,
       showSampleData                : false,
-      dataTipProperty               : 'value',
-      clientHeightCorrection        : 5,
+      dataTipProperty               : 'value',     
       currentTargetWindow           : null,
       mode                          :'normal',
       fixedWidth                    : false,
@@ -159,7 +156,7 @@
       var percent = this.getPercentage(this.w);
       this.svgWidth = (percent != 0)? Math.round(percent * cw): (this.fixedWidth)? this.w : cw; 
       percent = this.getPercentage(this.h)
-      this.svgHeight = (percent != 0)? Math.round(percent * (ch - this.clientHeightCorrection)): (this.fixedWidth)? this.h:ch  ;
+      this.svgHeight = (percent != 0)? Math.round(percent * ch ): (this.fixedWidth)? this.h:ch  ;
       this.prepareChart();
     },
         
@@ -191,14 +188,6 @@
     
     prepareChart: function(){
       var nodeContainer = this.parent();
-      /*if (nodeContainer != undefined && 
-            nodeContainer.clientHeight > 0 && 
-            nodeContainer.clientWidth > 0  &&
-            this.svgHeight == 0 &&
-            this.svgHeight == 0){
-        this.svgHeight = nodeContainer.clientHeight - this.clientHeightCorrection;//- 20;
-        this.svgWidth = nodeContainer.clientWidth ;//- 20;    
-      }*/   
       if (this.svgHeight <= 0 || this.svgWidth <= 0)
       return;  
       if (this.isThumbnailMode()) {
