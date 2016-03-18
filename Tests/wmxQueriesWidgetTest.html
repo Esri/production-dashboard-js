@@ -6,9 +6,8 @@
     <link rel="stylesheet" href="http://js.arcgis.com/3.16/dijit/themes/claro/claro.css">  
     <link rel="stylesheet" href="http://js.arcgis.com/3.16/esri/css/esri.css">
     <link rel="stylesheet" href="./../ProductionDashboard/mp-dashboard.css">  
- </head>
-
-<script>   
+ </head> 
+ <script>   
   var extensionLocation = location.pathname.replace(/\/[^/]+$/, ''); 
   var dojoConfig = {
     async: true,
@@ -18,10 +17,9 @@
       "esri/productiondashboard": extensionLocation + "/../ProductionDashboard"  
     }    
   };
-
-  </script> 
-  <script src="http://js.arcgis.com/3.16/"></script>
-  <script>
+ </script>   
+ <script src="http://js.arcgis.com/3.16/"></script>
+ <script>
     require(
     [ 
       "dojo/parser",
@@ -55,7 +53,7 @@
     <button onclick="setSelectedNode(-1)">Select to unknown node</button> -->
      <div data-dojo-type="dojox/layout/TableContainer" data-dojo-props="cols:1, orientation:'horiz', showLabels:true" >
         <div data-dojo-type="dojox/layout/TableContainer" style="width: 100%;"  id="tc3">    
-          <input data-dojo-type="dijit/form/ValidationTextBox"  placeHolder = "Type in WMX Service URL" label="WMX Service URL:" data-dojo-id="wmxUrl" data-dojo-props="required:true, regExp:dojox.validate.regexp.url" value='https://ogcedit.esri.com/pmediting/rest/services/MyWorkflowManagerService/WMServer' style="width:100%;"  />
+          <input data-dojo-type="dijit/form/ValidationTextBox"  placeHolder = "Type in WMX Service URL" label="WMX Service URL:" data-dojo-id="wmxUrl" data-dojo-props="required:true, regExp:dojox.validate.regexp.url" value='https://pmdemo.esri.com/server/rest/services/WMX/WMServer' style="width:100%;"  />
      </div>
  
     <div data-dojo-type="esri/productiondashboard/WMXRequest" data-dojo-id="request" data-dojo-props="url:'https://ogcedit.esri.com/pmediting/rest/services/MyWorkflowManagerService/WMServer'"></div>

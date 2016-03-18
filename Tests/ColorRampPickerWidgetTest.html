@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Color Ramp Picker Widget Declarative Testing</title>
+    <link rel="stylesheet" href="http://js.arcgis.com/3.16/dijit/themes/claro/claro.css">      
+ </head>
+
+<script>   
+  var extensionLocation = location.pathname.replace(/\/[^/]+$/, ''); 
+  var dojoConfig = {
+    async: true,
+    parseOnLoad: true, 
+    paths: {
+      "extension": extensionLocation,
+      "esri/productiondashboard": extensionLocation + "/../ProductionDashboard"  
+    }    
+  };
+
+  </script> 
+  <script src="http://js.arcgis.com/3.16/"></script>  
+  <body class="claro">
+    <h1>Color Ramp Picker Widget Declarative Testing</h1>
+    <span  data-dojo-id="crpw" data-dojo-type="esri/productiondashboard/ColorRampPickerWidget"></span>           
+  </body>
+</html>
+</html>

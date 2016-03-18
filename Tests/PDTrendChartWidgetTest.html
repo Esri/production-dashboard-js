@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>PD Trend Chart Test Page</title>    
+    <link rel="stylesheet" href="http://js.arcgis.com/3.16/dijit/themes/claro/claro.css">
+    <link rel="stylesheet" href="./../ProductionDashboard/mp-dashboard.css">
+    <style type="text/css">
+    body {
+        padding: 1.5em;
+      }
+      div.mediumcontainer {
+        position: relative;
+        width: 400px;
+        height: 400px;
+        float: left;
+        border: 1px solid #ccc;
+        margin: 12px;    
+      }  
+       div.smallcontainer {
+        position: relative;
+        width: 240px;
+        height:314px;
+        float: left;
+        border: 1px solid #ccc;
+        margin: 12px;     
+      }  
+       div.extrasmallercontainer {
+        position: relative;
+        width: 140px;
+        height:100px;
+        float: left;
+        border: 1px solid #ccc;
+        margin: 12px;     
+      }   
+      div.largecontainer {
+        position: relative;
+        width: 600px;
+        height:450px;
+        float: left;
+        border: 1px solid #ccc;
+        margin: 12px;        
+      }  
+      div.extralargecontainer {
+        position: relative;
+        width: 800px;
+        height:650px;
+        float: left;
+        border: 1px solid #ccc;
+        margin: 12px;        
+      }  
+  </style>
+ </head>
+ 
+<body class="claro">
+
+<script>   
+  var extensionLocation = location.pathname.replace(/\/[^/]+$/, ''); 
+  var dojoConfig = {
+    async: true,
+    //parseOnLoad: true, 
+    paths: {
+      "extension": extensionLocation,
+      "esri/productiondashboard": extensionLocation + "/../ProductionDashboard"
+    
+    }
+  };
+  </script> 
+  <script src="http://js.arcgis.com/3.16/"></script>  
+  <script>
+    require([         
+         "dojo/parser",          
+         "dojox/layout/TableContainer", 
+         "dijit/form/CheckBox",        
+         "dijit/form/Select",
+         "esri/productiondashboard/D3Charts/D3TrendChart",
+         "dojo/domReady!"
+         ], function(parser,TableContainer,CheckBox,Select,PDBarChart) {
+              parser.parse();
+              containerSize.on("change",changeContainerSize);                 
+         });
+    
+    function showChart(pdChart, container){
+        require(["dojo/dom"], function(dom){
+          var chartContainer = dom.byId(container);  
+          pdChart.showSampleData = true;                
+          pdChart.dataType = dataType.get('value');
+          pdChart.dateInterval = timePeriod.get('value');
+          pdChart.showHorizontalGridLines = showHorizontalGridLinesCB.get('checked');
+          pdChart.showHorizontalAxis = showHorizontalAxisCB.get('checked');
+          pdChart.ticksOrientation = labelOrientationCB.get('value');
+          pdChart.wrapHAxisText = wraplabelCB.get('value');
+          pdChart.showVerticalAxis = showVerticalAxisCB.get('value');
+          pdChart.showChart();
+        });        
+    }
+
+
+    function clearChart(pdChart){
+      if (pdChart != undefined) {
+        pdChart.clearContent();          
+      }
+    }
+
+    function changeContainerSize(){     
+      require(["dojo/dom","dojo/dom-class"],function(dom, domClass,oldvalue){
+         var container = dom.byId("chartContainer");
+         domClass.replace(container,containerSize.get('value')); 
+         pdTrendBarChart.showChart();
+      });
+    }
+     
+  </script>
+  <body class="claro">
+    <h1>PD Bar Chart Widget (Declarative Testing)</h1> 
+    <button onclick="showChart(pdTrendBarChart,'chartContainer')">Show Chart</button>
+    <button onclick="clearChart(pdTrendBarChart)">Clear Chart</button>
+    <div data-dojo-type="dojox/layout/TableContainer" data-dojo-props="cols:1, orientation:'horiz', showLabels:true" >
+       <div id="containerSize" data-dojo-id="containerSize"  label="Container Size:" data-dojo-type="dijit/form/Select">
+           <option value="extrasmallercontainer">X Small</option>
+           <option value="smallcontainer">Small</option>
+           <option value="mediumcontainer" selected="true">Medium</option>
+           <option value="largecontainer">Large</option>
+           <option value="extralargecontainer">X Large</option>          
+      </div>
+      <div id="dataType" data-dojo-id="dataType"  label="Data Type" data-dojo-type="dijit/form/Select">
+           <option value="date"  selected="true">Date</option>
+           <option value="number">Number</option>           
+      </div>
+      <div id="timePeriod" data-dojo-id="timePeriod"  label="Time Interval" data-dojo-type="dijit/form/Select">
+           <option value=""  selected="true">None</option>
+           <option value="day">Day</option>           
+           <option value="month">Month</option>   
+           <option value="year">Year</option>   
+      </div>
+       <div id="showHorizontalGridLinesCB" data-dojo-id="showHorizontalGridLinesCB" label="Grid Lines" data-dojo-type="dijit/form/CheckBox" data-dojo-props="checked:true"> </div>     
+       <div id="showHorizontalAxisCB" data-dojo-id="showHorizontalAxisCB"  label="Axis Labels" data-dojo-type="dijit/form/CheckBox" data-dojo-props="checked:true"></div>
+       <div id="labelOrientationCB" data-dojo-id="labelOrientationCB" label="Orientation" data-dojo-type="dijit/form/Select">
+           <option value=0>Horizontal</option>
+           <option value=90>Vertical</option>
+      </div>
+       <div id="wraplabelCB" data-dojo-id="wraplabelCB" label="Wrap Text Labels" data-dojo-type="dijit/form/CheckBox" data-dojo-props="checked:true"></div>  
+       <div id="showVerticalAxisCB" data-dojo-id="showVerticalAxisCB" label="Axis Labels" data-dojo-type="dijit/form/CheckBox" data-dojo-props="checked:true"> </div>    
+       
+    </div>  
+  
+    <div id="chartContainer" class="mediumcontainer">
+        <span  data-dojo-id="pdTrendBarChart" data-dojo-type="esri/productiondashboard/D3Charts/D3TrendChart" data-dojo-props=""></span>
+    </div>
+    
+  </body>
+</html>
+</html>
