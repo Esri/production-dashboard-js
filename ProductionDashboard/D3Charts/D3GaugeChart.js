@@ -251,7 +251,8 @@
             gaugeData.thresholdData = [ {   
                             startAngle: thresholdStartAngle,
                             endAngle: thresholdStartAngle * 1.02,
-                            color: (this.thresholdColor != undefined)? this.thresholdColor : this.startColor,
+                            /*color: (this.thresholdColor != undefined)? this.thresholdColor : this.startColor,*/
+                            color: '#545454',  // set to gray to mach core widgets 
                             tick: Number(this.threshold.toFixed(2))
                         }
                 ];  
@@ -358,7 +359,7 @@
                 .endAngle(function(d, i) {
                     return deg2rad(d.endAngle);
                 })
-                .padAngle(.02);
+                .padAngle(.04);
 
             
 
@@ -519,10 +520,8 @@
 
             var currentfontsize =  Math.round(parseInt(this.getBodyStylePropertyValue('font-size')));
 
-            //var minLeftMargin = this.labelInset - this._calculateMinimumLeftMargin(gaugeData,currentfontsize);
             var minLeftMargin =  this._calculateMinimumLeftMargin(gaugeData,currentfontsize);
 
-            /*var minRightMargin = this._calculateMinimumRightMargin(gaugeData,currentfontsize) - this.labelInset;    */
             var minRightMargin = this._calculateMinimumRightMargin(gaugeData,currentfontsize)
                     
             if (cMargins.left > this.svgWidth) cMargins.left = 0;
@@ -545,17 +544,11 @@
                 
 
             
-            var tip = d3.select(this.parent()).append('div')
-                .attr('id', "tooltip"+this.svgId)
-                .style('top','05px')
-                .style('left','05px')
-                .style('border-style','solid')
-                .style('border-width','medium')
-                .style('border-color', 'black')
-                .style('color','white')
-                .style('position', 'absolute')
-                .style('padding', '0 10px')
-                .style('opacity', 0);            
+            var tip = d3.select(this.parent()).append('div')            
+                    .attr('id', "tooltip"+this.svgId) 
+                    .attr('class', 'D3GaugeTip')
+                    .style('opacity', 0);            
+
 
             var deg2rad = function(deg) {
                     return deg * Math.PI / 180;
@@ -610,15 +603,7 @@
                         if (self.selectOnMap && self.onChartClick != undefined){
                             self.onChartClick(d,i);
                         }
-                    });
-                /*    .on('mouseover', function(d,i){
-                        if (d.tick < self.maxValue)
-                           indicator.text(self.labelFormat(d.tick));
-                    })
-                    .on('mouseout', function(d,i){
-                        if (d.tick < self.maxValue) 
-                           indicator.text(self.labelFormat(gaugeData.value));
-                    });*/
+                    });                
 
             // draw indicator
             var indicator_text = this.isThumbnailMode()? '[Value]' :this.labelFormat(gaugeData.value);
@@ -667,22 +652,14 @@
                             tempColor = this.style.fill;
                             tip.transition().style('opacity', .6); 
                             
-                        tip.style('background', (self.thresholdColor != undefined)? self.thresholdColor: self.startColor)
-                            .html('<label>Threshold:</label><strong>'+d.tick+'</strong><br/>'+
-                                       '<label>Min Value:</label><strong>'+self.minValue+'</strong><br/>'+
-                                       '<label>Max Value:</label><strong>'+self.maxValue+'</strong>');
-                            
-                        var top = d3.event.pageY, left = d3.event.pageX;    
-                        var sWidth = tip.style("width"), width = Number(sWidth.substr(0, sWidth.indexOf('px'))) + cMargins.right;
-                        if (width > 2 * radius) width = 2 * radius;
-                        
-                        tip.style('left','0' + 'px')
-                            .style('top', '0' + 'px')
-                            .style('width', width + 'px');
+                            tip.style('background', (self.thresholdColor != undefined)? self.thresholdColor: self.startColor)
+                               .html('<label>Threshold:&nbsp;</label><strong>'+d.tick+'&nbsp;</strong><br/>'+
+                                       '<label>Min Value:&nbsp;</label><strong>'+self.minValue+'&nbsp;</strong><br/>'+
+                                       '<label>Max Value:&nbsp;</label><strong>'+self.maxValue+'&nbsp;</strong>');
       
-                        d3.select(this)
-                            .style('opacity', .5)
-                            .style('fill', 'yellow');      
+                            d3.select(this)
+                                .style('opacity', .5)
+                                .style('fill', 'yellow');      
                         })
                         .on('mouseout',function(d){
                             d3.select(this)

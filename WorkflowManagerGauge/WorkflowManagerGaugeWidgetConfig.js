@@ -127,8 +127,8 @@
                       minAngle                :-90,
                       maxAngle                :90,                    
                       from_color              :"#f90",
-                      to_color                :"#f90",
-                      thresholdColor          :"#f90",                      
+                      to_color                :"#f90",                      
+                      thresholdColor          :"#545454",                      
                       select_on_map           :false,
                       showLabels              :false,
                       showThreshold           :false

@@ -30,19 +30,21 @@ svg {
        -moz-box-sizing: border-box;
             box-sizing: border-box;
 }
+/***** D3GaugeChart starts here *****/
+.D3GaugeTip {
+   top: 5px;
+   left:5px;
+   border-style :solid;
+   border-width: medium;
+   border-color: black;
+   color: white;
+   position: absolute;
+   padding: 0 10px 10px 10px;
 
-/***** D3IndicatorChart starts here *****/
-/*.D3IndicatorChart{
-  padding :0;
-}*/
-/***** D3IndicatorChart ends here *****/
-/***** D3PieChart starts here *****/
-/*.D3GaugeChart {
-   padding :0;
 }
-*//***** D3PieChart ends here *****/
-/***** D3PieChart starts here *****/
 
+/***** D3GaugeChart end here *****/
+/***** D3PieChart starts here *****/
 .D3PieChart .label-circle {
         fill: #393939;
 }
