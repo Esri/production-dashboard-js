@@ -21,7 +21,9 @@
  "dijit/_TemplatedMixin",
  "dijit/_WidgetsInTemplateMixin",
  "esri/productiondashboard/d3.min",
- "esri/productiondashboard/D3Charts/D3ChartEnum"
+ "esri/productiondashboard/D3Charts/D3ChartEnum",
+ "dojo/ready"
+ 
  ], function (declare,
               lang,              
               dom, 
@@ -46,14 +48,14 @@
                 }
      }());
 
- 	return declare("esri.productiondashboard.D3Charts.D3Chart",[_WidgetBase,_TemplatedMixin,_WidgetsInTemplateMixin], {
- 		
-    	baseClass                     :"D3Chart",
-    	templateString                :"<svg class='${baseClass}'></svg>",  
-    	svgHeight                     :0,
-    	svgWidth                      :0, 
+  return declare("esri.productiondashboard.D3Charts.D3Chart",[_WidgetBase,_TemplatedMixin,_WidgetsInTemplateMixin], {
+    
+      baseClass                     :"D3Chart",
+      templateString                :"<svg class='${baseClass}'></svg>",  
+      svgHeight                     :0,
+      svgWidth                      :0, 
       margin                        : {top: 0, right: 0, bottom: 0, left: 0},
-    	svgType                       :D3ChartEnum.UNKNOWN_CHART,
+      svgType                       :D3ChartEnum.UNKNOWN_CHART,
       data                          :[],
       selectOnMap                   :false,
       onChartClick                  :null,
@@ -61,7 +63,7 @@
       widthFactor                   : 1,
       heightFactor                  : 1,
       showSampleData                : false,
-      dataTipProperty               : 'value',     
+      dataTipProperty               : 'value',
       currentTargetWindow           : null,
       mode                          :'normal',
       fixedWidth                    : false,
@@ -70,8 +72,9 @@
       w                             : null,
      
 
-    buildRendering: function(){
+    buildRendering: function(args){
       this.inherited(arguments);
+      //lang.mixin(this, args);    
       this.h = this.svgHeight;
       this.w = this.svgWidth;
       var h = parseInt(this.svgHeight), w = parseInt(this.svgWidth);
@@ -84,11 +87,11 @@
     },
     
     startup: function(){
-      this.showChart(true);
+      this.showChart();
     },
     
     postCreate: function () {
- 		 	this.inherited(arguments);   
+      this.inherited(arguments);   
       this.svgId = this.getId();
       this.currentTargetWindow = window;
       window.addEventListener('resize', lang.hitch(this,function(e) {
@@ -132,31 +135,26 @@
      return parent;
     },
 
-    showChart:function(enForce){
+    showChart:function(){
       var  cw = 0, ch = 0;
-      var enforce =  (enForce == 'true') || enForce;
-      
-      /*if (enforce){
-          this.widthFactor = this.calcultateSizeFactor(this.w), 
-          this.heightFactor = this.calcultateSizeFactor(this.h);
-      }*/
       var parent = this.parent();
       if (parent != undefined){
-          
-          ch = 0.95 * parent.clientHeight;
-          cw = 0.9 *  parent.clientWidth ;
+          ch = 1 * parent.clientHeight;
+          cw = 1 *  parent.clientWidth ;
           var cth = 0, ctw = 0;
           if (this.currentTargetWindow != undefined){
              cth = this.currentTargetWindow.outerHeight;
              ctw = this.currentTargetWindow.outerWidth;
           }
-          ch = (ch < cth)? ch: cth;
-          cw = (cw < ctw)? cw: ctw;
+          if (ch == undefined) ch = cth;
+          if (cw == undefined) ch = ctw
+          /*ch = (ch < cth)? cth: ch;
+          cw = (cw < ctw)? ctw: cw;*/
       }
       var percent = this.getPercentage(this.w);
       this.svgWidth = (percent != 0)? Math.round(percent * cw): (this.fixedWidth)? this.w : cw; 
       percent = this.getPercentage(this.h)
-      this.svgHeight = (percent != 0)? Math.round(percent * ch ): (this.fixedWidth)? this.h:ch  ;
+      this.svgHeight = (percent != 0)? Math.round(percent * ch): (this.fixedWidth)? this.h:ch  ;
       this.prepareChart();
     },
         
@@ -183,11 +181,11 @@
     },
 
     visualizeIt: function(data){
-       // Implement by subclass 
+       // Implemented by subclass 
     },
     
     prepareChart: function(){
-      var nodeContainer = this.parent();
+      var nodeContainer = this.parent();     
       if (this.svgHeight <= 0 || this.svgWidth <= 0)
       return;  
       if (this.isThumbnailMode()) {
@@ -207,7 +205,7 @@
 
 
     getBodyStylePropertyValue: function(propname){
-        var body = document.querySelector('body');
+        var body = document.querySelector('svg');
         return window.getComputedStyle(body).getPropertyValue(propname);
     },
 
@@ -257,6 +255,6 @@
        return 'id'+ s4() + s4() + '-' + s4() + '-' + s4() + '-' +
             s4() + '-' + s4() + s4() + s4();
     }
-     	
- 	}); 	
+      
+  });   
   });

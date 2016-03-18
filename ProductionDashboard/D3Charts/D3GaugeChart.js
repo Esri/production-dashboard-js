@@ -519,18 +519,21 @@
 
             var currentfontsize =  Math.round(parseInt(this.getBodyStylePropertyValue('font-size')));
 
-            var minLeftMargin = this.labelInset - this._calculateMinimumLeftMargin(gaugeData,currentfontsize);
+            //var minLeftMargin = this.labelInset - this._calculateMinimumLeftMargin(gaugeData,currentfontsize);
+            var minLeftMargin =  this._calculateMinimumLeftMargin(gaugeData,currentfontsize);
 
-            var minRightMargin = this._calculateMinimumRightMargin(gaugeData,currentfontsize) - this.labelInset;    
+            /*var minRightMargin = this._calculateMinimumRightMargin(gaugeData,currentfontsize) - this.labelInset;    */
+            var minRightMargin = this._calculateMinimumRightMargin(gaugeData,currentfontsize)
                     
-            if (this.margin.left > this.svgWidth) cMargins.left = 0;
-            if (this.margin.right > this.svgWidth) cMargins.right = 0;
+            if (cMargins.left > this.svgWidth) cMargins.left = 0;
+            if (cMargins.right > this.svgWidth) cMargins.right = 0;
             
-            var min_side_margins = this.svgWidth * 0.03;
-            if (this.margin.right < min_side_margins) cMargins.right = min_side_margins;
-            if (this.margin.left < min_side_margins) cMargins.left = min_side_margins;
-            if (this.showLabels && this.margin.left < minLeftMargin) cMargins.left = minLeftMargin;
-            if (this.showLabels && this.margin.right < minRightMargin) cMargins.right = minRightMargin;
+            var min_side_margins = d3.max([minLeftMargin,minRightMargin]), min_bottom_margin = currentfontsize;
+            if (cMargins.right < min_side_margins) cMargins.right = min_side_margins;
+            if (cMargins.left < min_side_margins) cMargins.left = min_side_margins;
+            if (cMargins.bottom < min_bottom_margin) cMargins.bottom = min_bottom_margin;
+            if (this.showLabels && cMargins.left < minLeftMargin) cMargins.left = minLeftMargin;
+            if (this.showLabels && cMargins.right < minRightMargin) cMargins.right = minRightMargin;
            // if (this.showLabels && this.margin.bottom < 40) cMargins.bottom = 40;
 
             this.labelInset = - 0.02 * this.svgWidth;

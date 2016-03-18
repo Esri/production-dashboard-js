@@ -18,12 +18,11 @@
 ], function(declare){
   var PDInit = declare(null, {});
   PDInit.WMX_SERVICE       = { 
-                             url: '',
-                             username: ''
+                             url: 'https://pmdemo.esri.com/server/rest/services/WMX/WMServer',
+                             username: 'demo1'
                             };
   PDInit.DRS_SERVICE      = {
-                              url: '',
-                              username: '' 
+                              url: 'https://datareviewer.arcgisonline.com/arcgis/rest/services/Samples/reviewerDashboard/MapServer'                             
                             };
 
   PDInit.GROUP_BY_DAY          = 'day';

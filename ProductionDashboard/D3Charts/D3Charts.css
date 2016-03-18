@@ -15,42 +15,54 @@
 
 @import url(https://fonts.googleapis.com/css?family=Chewy);
 
-
-
 svg {
   font-family: 'Chewy', cursive;
   font-weight: 400;
-  font-size: .9em;
+  font-size: .8em;
 }
 
-.D3Chart {
+.D3Chart, .D3GaugeChart,.D3IndicatorChart, .D3PieChart {
   width: 100%;
   height: 100%;
-
- 
 }
-.D3Chart , .D3Chart * {
+.D3Chart , .D3PieChart, .D3GaugeChart, .D3IndicatorChart, .D3Chart * {
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
             box-sizing: border-box;
 }
 
-.D3IndicatorChart{
+/***** D3IndicatorChart starts here *****/
+/*.D3IndicatorChart{
   padding :0;
-}
-
-.D3GaugeChart {
+}*/
+/***** D3IndicatorChart ends here *****/
+/***** D3PieChart starts here *****/
+/*.D3GaugeChart {
    padding :0;
 }
-/***** PDPieChart starts here *****/
+*//***** D3PieChart ends here *****/
+/***** D3PieChart starts here *****/
+
+.D3PieChart .label-circle {
+        fill: #393939;
+}
+
+.D3PieChart .label-line {
+  stroke-width: 1;
+  stroke: #393939;
+}
+
+.D3PieChart .label-text {
+  fill: #393939;
+}
 
 .PieChart_Label {
+  position: absolute;
   border-style: solid;
   border-width: thin;
   border-color:black;  
-  color: black;
-  position: absolute;
+  color: black;  
   padding: 0 10px;
   background-color: white;              
 }
-/***** PDPieChart end here *****/
+/***** D3PieChart end here *****/

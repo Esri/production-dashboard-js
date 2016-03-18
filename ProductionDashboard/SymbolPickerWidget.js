@@ -93,6 +93,7 @@ define([
                                                          this.symbolButton);
 
            var chart = new PDIndicatorChart({
+                                                baseClass: 's_picker',
                                                 symbolStyle: this.selectedSymbol, 
                                                 mode:'icon',
                                                 container: this.selectedSymbolDiv ,
@@ -124,6 +125,7 @@ define([
                                                          },
                                                          this.symbolButton);
             var chart = new PDIndicatorChart({
+                                                baseClass: 's_picker',
                                                 symbolStyle: this.selectedSymbol, 
                                                 mode:'icon',
                                                 container: this.selectedSymbolDiv ,
@@ -144,6 +146,7 @@ define([
                                                       }, 
                                                     this.symbolContainer);            
               chart = new PDIndicatorChart({
+                                            baseClass: 's_picker',
                                             symbolStyle: styles[i],
                                             mode:'icon',
                                             fill_color:this.symbolFillColor,
@@ -154,82 +157,8 @@ define([
               domConstruct.place(chart.domNode,symbolDiv);   
             }           
  
-            /*this.faceUpArrowDiv = domConstruct.create("div",
-                                                      { 
-                                                        title:'face-up-arrow' , 
-                                                        className: this.baseClass+'Symbol' , 
-                                                        onclick: lang.hitch(this,this.symbolClick)
-                                                      }, 
-                                                    this.symbolContainer);            
-            chart = new PDIndicatorChart({
-                                            symbolStyle: 'face-up-arrow',
-                                            mode:'icon',
-                                            fill_color:this.symbolFillColor,
-                                            svgHeight: 36,
-                                            svgWidth: 36
-                                          });
-            chart.showChart();
-            domConstruct.place(chart.domNode,this.faceUpArrowDiv);
-
-            this.faceDownArrowDiv = domConstruct.create("div",
-                                                      { 
-                                                        title:'face-down-arrow' , 
-                                                        className: this.baseClass+'Symbol' , 
-                                                        onclick: lang.hitch(this,this.symbolClick)
-                                                      }, 
-                                                    this.symbolContainer);            
-            chart = new PDIndicatorChart({
-                                            symbolStyle: 'face-down-arrow',
-                                            mode:'icon',
-                                            fill_color:this.symbolFillColor,
-                                            svgHeight: 36,
-                                            svgWidth: 36
-                                          });
-            chart.showChart();
-            domConstruct.place(chart.domNode,this.faceDownArrowDiv);
-
-            this.circleDiv = domConstruct.create("div",
-                                                      { 
-                                                        title:'circle' , 
-                                                        className: this.baseClass+'Symbol' , 
-                                                        onclick: lang.hitch(this,this.symbolClick)
-                                                      }, 
-                                                    this.symbolContainer);            
-            chart = new PDIndicatorChart({
-                                            symbolStyle: 'circle', 
-                                            mode:'icon', 
-                                            fill_color:this.symbolFillColor,
-                                            svgHeight: 36,
-                                            svgWidth: 36
-                                          });
-            chart.showChart();
-            domConstruct.place(chart.domNode,this.circleDiv);
-
-            this.crossDiv = domConstruct.create('div', { 
-                                                        title:'cross' , 
-                                                        className: this.baseClass+'Symbol' , 
-                                                        onclick: lang.hitch(this,this.symbolClick)
-                                                      }, 
-                                                    this.symbolContainer);
-
-            chart = new PDIndicatorChart({
-                                            symbolStyle: 'cross', 
-                                            mode:'icon', 
-                                            fill_color:this.symbolFillColor,
-                                            svgHeight: 36,
-                                            svgWidth: 36
-                                          });
-            chart.showChart();
-            domConstruct.place(chart.domNode,this.crossDiv);
-*/
-
-
+ 
         }
 
-
      });
-
-     /*ready(function(){
-         parser.parse();
-     });*/
  });

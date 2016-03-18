@@ -94,7 +94,9 @@
           labelOrientationSelectValuesStore : [
                { value: 0, label: "Horizontal"},
                { value: 90, label: "Vertical"}
-          ],          
+          ],
+
+          margin : {top: 0, right: 10, bottom: 10, left: 0},             
           
           postCreate: function(){            
             this.inherited(arguments);                      
@@ -453,7 +455,7 @@
           },
          
           previewChart: function(){            
-            this.chartPreview.svgType = D3ChartEnum.BAR_CHART;
+            this.chartPreview.margin = this.margin;
             this.chartPreview.showHorizontalGridLines = this.widgetConfig.chartConfig.showHorizontalGridLines;
             this.chartPreview.showHorizontalAxis = this.widgetConfig.chartConfig.show_horizontal_axis;
             this.chartPreview.ticksOrientation = this.widgetConfig.chartConfig.horizontal_ticks_orientation;

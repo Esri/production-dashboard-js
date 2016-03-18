@@ -46,7 +46,7 @@
   "esri/productiondashboard/WMXEnum",
   "esri/productiondashboard/WMXRequest",
   "esri/productiondashboard/WMXQueriesWidget",
- /* "esri/productiondashboard/PDChartEnum",*/
+  "esri/productiondashboard/ColorRampPickerWidget", 
   "esri/productiondashboard/D3Charts/D3PieChart",
   "dojo/domReady!"  
 ], function (declare, 
@@ -81,7 +81,7 @@
              WMXEnum,
              WMXRequest,
              WMXQueriesWidget,
-           /*  PDChartEnum,     */  
+             ColorRampPickerWidget,           
              pdChartPreview
              ){
 
@@ -90,7 +90,7 @@
     	   {
 
 	    		templateString: templateString,
-          margin : {top: 0, right: 0, bottom: 0, left: 0},
+          margin : {top: 10, right: 10, bottom: 10, left: 10},
           widgetConfig: {},
           defaultSelectValuesStore : [
                              { value: "loading", label: " "}],          
@@ -147,6 +147,8 @@
                  chartConfig             :{
                   donut_factor              :0,
                   showLabelTotal            :false,
+                  useColorRamp              : true,
+                  colorRamp                 :[],
                   placeWedgeLabel           :'onWedgeHover',
                   labelContent              :'data&label'
                 }
@@ -176,11 +178,19 @@
           },
 
           intializeAppearanceTab: function(){
-            status = (this.widgetConfig.chartConfig.placeWedgeLabel == 'onWedgeHover')
-            this.onWedgeHoverRB.set('checked', status);
-            this.aroundPieRB.set('checked', !status);
-            status = (this.widgetConfig.chartConfig.labelContent == 'data');            
+            var status = (this.widgetConfig.chartConfig.placeWedgeLabel == 'onWedgeHover')
+            this.onWedgeHoverRB.set('checked', Boolean(status));
+            this.aroundPieRB.set('checked', !Boolean(status));  
+            this.crpw.on('selectedColorRamp',lang.hitch(this,this.colorRampChangeEventHandler));
+            this.widgetConfig.chartConfig.colorRamp = this.crpw.getSelectedColorRamp();
+            this.previewChart();                 
           },
+
+           colorRampChangeEventHandler: function(colorRamp){            
+            this.widgetConfig.chartConfig.colorRamp = colorRamp;
+            this.validateConfig();
+            this.previewChart();
+          }, 
 
           setQueryTabStatus: function(status){
             this.queryTab.set('disabled', !status);
@@ -386,14 +396,14 @@
             this.validateConfig();
           },
 
-          previewChart : function(){
-            //this.chartPreview.container = this.chartPreviewCP;
+          previewChart : function(){            
             this.chartPreview.margin = this.margin;
-            //this.chartPreview.svgType = PDChartEnum.PIE_CHART;
             this.chartPreview.donut_factor = this.widgetConfig.chartConfig.donut_factor;
             this.chartPreview.showLabelTotal = this.widgetConfig.chartConfig.showLabelTotal;
             this.chartPreview.placeWedgeLabel = this.widgetConfig.chartConfig.placeWedgeLabel;
             this.chartPreview.labelContent = this.widgetConfig.chartConfig.labelContent;
+            this.chartPreview.useColorRamp =  this.widgetConfig.chartConfig.useColorRamp;
+            this.chartPreview.colorRamp = this.widgetConfig.chartConfig.colorRamp;
             this.chartPreview.showChart();          
           },
 

@@ -75,8 +75,9 @@ define([
             value = (self.valueField.type == WMXEnum.DATE_DATATYPE)? self._getFormattedDateValue(dsValue,self.valueFieldIndex,self.vGroupBy): dsValue;
             dsId = self._getFieldValue(row,self.idFieldIndex);  
             id = (self.idField.type == WMXEnum.DATE_DATATYPE)? self._getFormattedDateValue(dsId,self.idFieldIndex,self.idGroupBy): dsId;
-            datasourceId = self._getFieldValue(row,self.datasourceIdIndex); 
-            this.wmxdo = new WMXDataObject({
+            datasourceId = self._getFieldValue(row,self.datasourceIdIndex);
+            if (id != undefined && value != undefined){
+                this.wmxdo = new WMXDataObject({
                                             values: [value], 
                                             dsValues: [dsValue],
                                             id: id, 
@@ -84,23 +85,24 @@ define([
                                             datasourceId: [datasourceId], 
                                             groupedValue: 1
                                           });
-            if (!self.groupValueField) {                
-              data.push(this.wmxdo);
-            } else {
-              var found = false;             
-              data.forEach(function (gd){
-                  if (gd.id === this.wmxdo.id) {
-                    gd.groupedValue++;
-                    gd.values.push(this.wmxdo.values[0]);
-                    gd.dsValues.push(this.wmxdo.dsValues[0]);
-                    gd.datasourceId.push(this.wmxdo.datasourceId[0]);
-                    found = true;
-                  }
-              });
-              if (!found){
+                if (!self.groupValueField) {                
                   data.push(this.wmxdo);
-              }
-            }
+                } else {
+                  var found = false;             
+                  data.forEach(function (gd){
+                      if (gd.id === this.wmxdo.id) {
+                        gd.groupedValue++;
+                        gd.values.push(this.wmxdo.values[0]);
+                        gd.dsValues.push(this.wmxdo.dsValues[0]);
+                        gd.datasourceId.push(this.wmxdo.datasourceId[0]);
+                        found = true;
+                      }
+                  });
+                  if (!found){
+                      data.push(this.wmxdo);
+                  }
+                }  
+            }              
           });
         }
         data.sort(function (a,b){

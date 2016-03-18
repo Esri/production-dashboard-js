@@ -28,7 +28,7 @@
 
   return declare("WorkflowManagerBarWidget", [_WidgetBase, _TemplatedMixin, WidgetProxy], {      
     templateString: '<div data-dojo-attach-point="chartPreview"  style="height:100%; width:100%;overflow:hidden;"></div>',
-    margin : {top: 10, right: 10, bottom: 15, left: 10},   
+    margin : {top: 10, right: 10, bottom: 10, left: 10},   
     wmxRequest: null,
     wmxChartDS: null,
     widgetConfig: null,
@@ -46,11 +46,13 @@
 
       var self = lang.hitch(this);
       this.chart.data = this.data; 
-      //this.chart.margin = this.margin,     
+      this.chart.margin = this.margin,     
       this.chart.donut_factor = this.widgetConfig.chartConfig.donut_factor;
       this.chart.showLabelTotal = this.widgetConfig.chartConfig.showLabelTotal;
       this.chart.placeWedgeLabel = this.widgetConfig.chartConfig.placeWedgeLabel;
       this.chart.labelContent = this.widgetConfig.chartConfig.labelContent;
+      this.chart.useColorRamp =  this.widgetConfig.chartConfig.useColorRamp;
+      this.chart.colorRamp = this.widgetConfig.chartConfig.colorRamp;
       this.chart.selectOnMap = this.widgetConfig.addMapIntegration;
       this.chart.onChartClick = lang.hitch(this, function(d,i){
           this.selectFeaturesOnMap(d.data.dsId);

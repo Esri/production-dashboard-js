@@ -29,7 +29,7 @@
 
   return declare("WorkflowManagerTrendWidget", [_WidgetBase, _TemplatedMixin, WidgetProxy], {        
     templateString: '<div data-dojo-attach-point="chartPreview"></div>',
-    margin : {top: 10, right: 10, bottom: 10, left: 10},   
+    margin : {top: 10, right: 10, bottom: 0, left: 0},   
     wmxRequest: null,
     wmxChartDS: null,
     widgetConfig: null,
@@ -73,7 +73,7 @@
       } else {
         this.chart.dataType = 'number';
       }     
-      //this.chart.margin = this.margin
+      this.chart.margin = this.margin
       this.chart.showHorizontalGridLines = this.widgetConfig.chartConfig.showHorizontalGridLines;
       this.chart.showHorizontalAxis = this.widgetConfig.chartConfig.show_horizontal_axis;
       this.chart.ticksOrientation = this.widgetConfig.chartConfig.horizontal_ticks_orientation;

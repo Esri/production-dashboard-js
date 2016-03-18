@@ -28,7 +28,7 @@
 
   return declare("WorkflowManagerBarWidget", [_WidgetBase, _TemplatedMixin, WidgetProxy], {        
     templateString: '<div data-dojo-attach-point="chartPreview"></div>',
-    margin : {top: 05, right: 05, bottom: 05, left: 05},   
+    margin : {top: 10, right: 10, bottom: 05, left: 0},   
     wmxRequest: null,
     wmxChartDS: null,
     widgetConfig: null,

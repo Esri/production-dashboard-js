@@ -21,7 +21,7 @@ define([
   PDChartEnum.TREND_CHART = 'trendChart';
   PDChartEnum.BAR_CHART = 'barChart'; 
   PDChartEnum.INDICATOR_CHART = 'indicatorChart';
-  PDChartEnum.GAUGE_CHART = 'gaudgeChart';
+  PDChartEnum.GAUGE_CHART = 'gaugeChart';
   PDChartEnum.PIE_CHART = 'pieChart';  
   return PDChartEnum;
 });

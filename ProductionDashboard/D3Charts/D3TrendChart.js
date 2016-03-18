@@ -39,7 +39,8 @@
                                     {d: "11/10/2015", value: 1},
                                     {d: "12/26/2015", value: 1}
                                   ],
-        addDataCircles          : false,                          
+        addDataCircles          : false,  
+        wrapHAxisText           : false,                        
                                   
         postCreate: function (args) {
  		 	this.inherited(arguments);
@@ -345,9 +346,9 @@
 
             var svgId = this.getId()
             
-            var svg = this.chart = d3.select(this.domNode)   
-                    .attr("width", width + currentMargin.left + currentMargin.right)
-                    .attr("height", height + currentMargin.top + currentMargin.bottom)
+            var svg = this.chart = d3.select(this.domNode)                      
+                    .attr("width", width)
+                    .attr("height", height)
                     .attr('id',this.id)
                     .append("g")
                        .attr('id',this.svgId)

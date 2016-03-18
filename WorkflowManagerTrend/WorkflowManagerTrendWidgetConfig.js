@@ -71,7 +71,8 @@
     	           [_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, WidgetConfigurationProxy],
     	   {
 
-	    		templateString: templateString,         
+	    		templateString: templateString,    
+          margin : {top: 05, right: 15, bottom: 15, left: 0},      
           widgetConfig: {},
 
           defaultSelectValuesStore : [
@@ -446,7 +447,7 @@
                 this.chartPreview.dataType = 'number';
               }
             }
-            //this.chartPreview.margin = {top: 05, right: 05, bottom: 05, left: 05};
+            this.chartPreview.margin = this.margin;
             this.chartPreview.showHorizontalGridLines = this.widgetConfig.chartConfig.showHorizontalGridLines;
             this.chartPreview.showHorizontalAxis = this.widgetConfig.chartConfig.show_horizontal_axis;
             this.chartPreview.ticksOrientation = this.widgetConfig.chartConfig.horizontal_ticks_orientation;

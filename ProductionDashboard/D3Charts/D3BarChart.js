@@ -192,9 +192,10 @@
                 minBottomMargin = this._calculateMinimumBottomMargin(currentfontsize,maxLabelLines,linesInData.longuestWord);
                       
             
-            var maxValue = d3.max(this.data, function(d){return d.value;}),
-                minLeftMargin = Math.round(maxValue).toString().length * currentfontsize; 
-               
+            var maxValue = d3.max(this.data, function(d){
+                                                return d.value;
+                                             }),
+                minLeftMargin = (maxValue.toString().length + 2) * currentfontsize * .8;  // counting for one decimal               
             
             if (show_vertical_axis){
                 if (currentMargin.left  < minLeftMargin ) {
@@ -262,12 +263,14 @@
             var svgId = this.svgId;
             
             var svg = this.chart = d3.select(this.domNode)
-                      .attr('width', width + currentMargin.left + currentMargin.right)
-                      .attr ('height', height + currentMargin.top + currentMargin.bottom)            
+                      /*.attr('width', width + currentMargin.left + currentMargin.right)
+                      .attr ('height', height + currentMargin.top + currentMargin.bottom)    */        
+                      .attr('width', width)
+                      .attr ('height', height)          
                       .attr('id',this.id)
                       .append('g')
                       .attr('id',this.svgId)
-                      .attr('transform', 'translate('+ currentMargin.left +', ' + currentMargin.top +')')
+                      .attr('transform', 'translate('+ currentMargin.left +', ' + currentMargin.top +')')                      
                       .selectAll('rect').data(this.data)
                       .enter().append('rect')
                         .style('fill', function(d,i){
@@ -329,6 +332,7 @@
             var vAxis = d3.svg.axis()
                         .scale(vGuideScale)
                         .orient('left') 
+                        /*.tickFormat(d3.format('.1f'))*/
                         .ticks(v_ticks);
 
 

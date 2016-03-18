@@ -65,24 +65,25 @@ define([
      
     }, 
     buildRendering: function(){
-      this.inherited(arguments);      
-      this.refresh();                            
+      this.inherited(arguments);                                    
     },      
 
     postCreate: function(){
       this.inherited(arguments);
-      
+       this.refresh(); 
     },
     setSelectedSwatchColor: function(color){        
       var id = dom.byId(this.selected_color_div_id)
-      domStyle.set(id, 'background-color',color);     
+      if (id != undefined)
+           domStyle.set(id, 'background-color',color);     
       this.setSelectedColor(color);
       this.emit("selectedColor", color);             
     },
 
     refresh: function(){          
-      this.colorPalette.on('selectedColor', lang.hitch(this, this.setSelectedSwatchColor))
-      this.setSelectedColor(this.selectedColor);   
+      this.colorPalette.on('selectedColor', lang.hitch(this, this.setSelectedSwatchColor))      
+      /*this.setSelectedColor(this.selectedColor);   */
+      this.setSelectedSwatchColor(this.selectedColor);
     },
 
     setSelectedColor: function(color){  

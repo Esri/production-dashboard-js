@@ -46,7 +46,7 @@ define([
       switch (field.type) {
             case WMXEnum.DATE_DATATYPE: // Date field: format to m/d/Y
                var date = new Date(v);
-               return (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
+               return (!isNaN(date.getDate()))? (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear(): null;
              case WMXEnum.SHORT_DATATYPE:
              case WMXEnum.LONG_DATATYPE:
              case WMXEnum.OBJECTID_DATATYPE:  

@@ -77,6 +77,7 @@
     return declare("DataReviewerBarWidgetConfig", [_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, WidgetConfigurationProxy], {
 
   		templateString: templateString,
+      margin : {top: 0, right: 10, bottom: 10, left: 0},
       defaultSelectValuesStore : [
                                       { value: "loading", label: " "}
                                  ],
@@ -84,8 +85,7 @@
       drsRequest: null, 
       drsFiltersObjectStore: null,
       drsSelectedFilter : null,
-      drsFilters: null,
-      margin : {top: 05, right: 05, bottom: 05, left: 05},  
+      drsFilters: null,      
 
       labelOrientationSelectValuesStore : [
                { value: 0, label: "Horizontal"},
@@ -149,8 +149,7 @@
                                        drsFilters: this.widgetConfig.drsFilters,                                                                        
                                        widgetConfig: this.widgetConfig
                                      });
-        this.drsRequest.on("drsRequest_error", lang.hitch(this,function(error){
-                //console.log("error="+ error.error.message);
+        this.drsRequest.on("drsRequest_error", lang.hitch(this,function(error){          
                 this.widgetConfig.drsUrl = null;
                 this.validateConfig();             
                 this.showErrorDialog("Unable to resolve Data Reviewer Service URL");
@@ -429,14 +428,12 @@
       },
       
       updateChartProperties: function(){
-        this.chartPreview.svgType = D3ChartEnum.BAR_CHART;
+        this.chartPreview.margin = this.margin;
         this.chartPreview.showHorizontalGridLines = this.widgetConfig.chartConfig.showHorizontalGridLines;
         this.chartPreview.showHorizontalAxis = this.widgetConfig.chartConfig.show_horizontal_axis;
         this.chartPreview.ticksOrientation = this.widgetConfig.chartConfig.horizontal_ticks_orientation;
         this.chartPreview.wrapHAxisText = this.widgetConfig.chartConfig.wrapHAxisText;
         this.chartPreview.showVerticalAxis = this.widgetConfig.chartConfig.show_vertical_axis;
-       /* this.chartPreview.endColor = this.widgetConfig.chartConfig.to_color;
-        this.chartPreview.startColor = this.widgetConfig.chartConfig.from_color;*/
         this.chartPreview.selectOnMap = this.widgetConfig.chartConfig.select_on_map;
         this.chartPreview.useColorRamp =  this.widgetConfig.chartConfig.useColorRamp;
         this.chartPreview.colorRamp = this.widgetConfig.chartConfig.colorRamp;

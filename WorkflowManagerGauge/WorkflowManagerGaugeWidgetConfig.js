@@ -279,6 +279,7 @@
             domStyle.set(this.thresholdColorCellValue, "visibility", "visible");
             domStyle.set(this.thresholdColorCellLabel, "visibility", "visible");             
             domStyle.set(this.chartPreviewOverThreshold.id, "visibility", "visible");
+            //this.chartPreviewOverThreshold.showChart();
             this.previewChart();
           },
 
@@ -287,6 +288,7 @@
             domStyle.set(this.thresholdColorCellValue, "visibility", "hidden");
             domStyle.set(this.thresholdColorCellLabel, "visibility", "hidden"); 
             domStyle.set(this.chartPreviewOverThreshold.id, "visibility", "hidden");
+            //this.chartPreviewOverThreshold.clearContent();
             this.previewChart();
           },
 

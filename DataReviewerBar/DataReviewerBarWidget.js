@@ -27,7 +27,7 @@
  function (declare, lang, _WidgetBase, _TemplatedMixin, WidgetProxy, DRSRequest, pdChart ){
  	return declare("DataReviewerBarWidget", [_WidgetBase, _TemplatedMixin, WidgetProxy], {
  		templateString: '<div data-dojo-attach-point="chartPreview" style="overflow:hidden;"></div>',
-    	margin : {top: 05, right: 05, bottom: 05, left: 05},   
+    	margin :  {top: 10, right: 10, bottom: 05, left: 0},   
     	drsRequest: null,
     	widgetConfig: null,
     	data: null,

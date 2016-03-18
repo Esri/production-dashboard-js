@@ -32,7 +32,7 @@ define([
 
   return declare("DataReviewerPieWidget", [_WidgetBase, _TemplatedMixin, WidgetProxy], {    
     templateString: '<div data-dojo-attach-point="chartPreview" style="overflow:hidden;"></div>',
-    margin : {top: 05, right: 05, bottom: 05, left: 05},  
+    margin : {top: 10, right: 10, bottom: 10, left: 10},  
     widgetConfig: null,
     data: null,
     drsRequest: null,
@@ -54,6 +54,8 @@ define([
       this.chart.showLabelTotal = this.widgetConfig.chartConfig.showLabelTotal;
       this.chart.placeWedgeLabel = this.widgetConfig.chartConfig.placeWedgeLabel;
       this.chart.labelContent = this.widgetConfig.chartConfig.labelContent;
+      this.chart.useColorRamp =  this.widgetConfig.chartConfig.useColorRamp;
+      this.chart.colorRamp = this.widgetConfig.chartConfig.colorRamp;
       this.chart.selectOnMap = this.widgetConfig.addMapIntegration;
       this.chart.showChart(this.chartData);     
     },
