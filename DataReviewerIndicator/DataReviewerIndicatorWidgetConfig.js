@@ -587,7 +587,7 @@
               function(error){
                 console.log(error.error.message);
               },
-              this.drsFilters);
+              null);
           },
 
           onDrsVariableLabelChange: function(e){

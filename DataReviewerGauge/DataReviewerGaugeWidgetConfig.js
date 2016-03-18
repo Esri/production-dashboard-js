@@ -562,7 +562,7 @@
               function(error){
                 console.log(error.error.message);
               },
-              this.drsFilters);
+              null);
           },
 
           getGuid: function(){
