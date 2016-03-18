@@ -127,13 +127,14 @@ define([
         },  
 
       	loadTree: function(data){
-      		//console.log(data);                  
+      		//console.log(data);         
+          this.queries  =  {"id":"root" , "type": "root", "name":"All Queries", "children":[]};        
           if (data instanceof Array){
             for (var i =0;i<data.length;i++){            
                this.addContainer(data[i]);
              }            
             }
-            console.log(this.queries);
+            //console.log(this.queries);
             var memory = new Memory(
                  {
                    data:[ this.queries ] , 
