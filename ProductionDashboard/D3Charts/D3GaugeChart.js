@@ -188,16 +188,15 @@
 
             if (arcsData.length == 1 && this.showThreshold) {  // we have only on data value, we are a testing whether its value is greater than threshold.
                 if (arcsData[0].tick > this.threshold) {
-                    arcsData[0].color = (this.thresholdColor != undefined) ? this.thresholdColor: this.startAngle ;
+                    arcsData[0].color = (this.thresholdColor != undefined) ? this.thresholdColor: this.startColor ;
                 }
             }
             
             if (endAngle < this.maxAngle){
                 arcsData.push({
                     startAngle: endAngle,
-                    endAngle: this.maxAngle ,
-                    //color: (data.length == 1)? this.endColor : colors(arcsData.length),
-                    color: (data.length == 1)? this.endColor : (this.thresholdColor != undefined)? this.thresholdColor:this.startColor,
+                    endAngle: this.maxAngle ,                    
+                    color: this.endColor,
                     tick: maxvalue 
                 })
             }
@@ -228,20 +227,27 @@
                       gaugeData.value = count; 
                 }
                 gaugeData.value = Number(gaugeData.value.toFixed(2));
+                // Adjust value color.
+                /*gaugeData.color = (gaugeData.value > this.threshold)? this.thresholdColor: this.startColor*/
+                
             }
             var labelData = [];
 
             labelData.push({
                             startAngle: this.minAngle,
                             endAngle: this.minAngle,
-                            color: (this.pointerValueColor != undefined)? this.pointerValueColor: this.startColor ,
+                            /*color: (this.pointerValueColor != undefined)? this.pointerValueColor: this.startColor ,*/
+                            color: (arcsData.length == 2)? arcsData[0].color:
+                                   (this.pointerValueColor != undefined)? this.pointerValueColor: this.startColor,
                             tick: Number(this.minValue.toFixed(2))
                         });
 
             labelData.push({
                             startAngle: this.minAngle,
                             endAngle: this.maxAngle,
-                            color: (this.pointerValueColor != undefined)? this.pointerValueColor: this.startColor,
+                            /*color: (this.pointerValueColor != undefined)? this.pointerValueColor: this.startColor,                            */
+                            color: (arcsData.length == 2)? arcsData[0].color:
+                                   (this.pointerValueColor != undefined)? this.pointerValueColor: this.startColor,
                             tick: Number(this.maxValue.toFixed(2))
                         });
 
@@ -606,6 +612,7 @@
                     });                
 
             // draw indicator
+            var indicator_fill_color = gaugeData.labelData[0].color;
             var indicator_text = this.isThumbnailMode()? '[Value]' :this.labelFormat(gaugeData.value);
             var max_text_length = (donutWidth != 0)? donutWidth * 2  :radius * 2;
             var fontsize = max_text_length / (indicator_text.toString().length + 1);            
@@ -614,7 +621,7 @@
                 .attr('transform',centerTranslation)
                 .attr('font-size', fontsize)
                 .attr('text-anchor','middle')
-                .attr('fill', (this.pointerValueColor != undefined)? this.pointerValueColor: this.startColor)
+                .attr('fill', indicator_fill_color)
                 .text(indicator_text);
           
             // draw threshold
@@ -652,7 +659,8 @@
                             tempColor = this.style.fill;
                             tip.transition().style('opacity', .6); 
                             
-                            tip.style('background', (self.thresholdColor != undefined)? self.thresholdColor: self.startColor)
+                            /*tip.style('background', (self.thresholdColor != undefined)? self.thresholdColor: self.startColor)*/
+                            tip.style('background', d.color)
                                .html('<label>Threshold:&nbsp;</label><strong>'+d.tick+'&nbsp;</strong><br/>'+
                                        '<label>Min Value:&nbsp;</label><strong>'+self.minValue+'&nbsp;</strong><br/>'+
                                        '<label>Max Value:&nbsp;</label><strong>'+self.maxValue+'&nbsp;</strong>');
@@ -687,9 +695,9 @@
                     .append('text')
                        .attr('transform', function(d) {
                             if ( d.endAngle < 0 ){
-                                return 'translate(' +(self.labelInset - radius) + ',0)'
+                                return 'translate(' +   (-radius-10 - (currentfontsize * .6 * d.tick.toString().length)) + ',0)'
                             } else {
-                                return 'translate(' +(radius - self.labelInset) + ',0)'
+                                return 'translate(' + (radius +10)  + ',0)'
                             }                       
                         })
                         .attr('text-anchor',function (d){

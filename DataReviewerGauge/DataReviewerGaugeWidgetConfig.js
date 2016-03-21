@@ -90,7 +90,8 @@
               {value:PDInit.CALCULATE_BY_MAX , label: "Maximum"},
               {value:PDInit.CALCULATE_BY_MIN , label: "Minimum"},
               {value:PDInit.CALCULATE_BY_AVERAGE, label: "Average"},
-              {value:PDInit.CALCULATE_BY_SUM, label: "Sum"}
+              {value:PDInit.CALCULATE_BY_SUM, label: "Sum"},              
+              
           ],
 
           emptyDistinctValuesStore : [
@@ -163,7 +164,7 @@
                     style                   : 'half-donut-with-no-pointer',                      
                     minValue                :0,
                     maxValue                :0,
-                    calculateValueMethod    :'average',
+                    calculateValueMethod    :PDInit.CALCULATE_BY_SUM,
                     threshold               :0,
                     minAngle                :-90,
                     maxAngle                :90,
@@ -196,7 +197,7 @@
             } else {
               this.removeThreshold();
             }
-            this.setSelectStore(this.calculationMethod,this.calculationMethodStoreData,"value", "label", this.widgetConfig.method);
+            this.setSelectStore(this.calculationMethod,this.calculationMethodStoreData,"value", "label", this.widgetConfig.chartConfig.calculateValueMethod);
             this.colorPicker.setSelectedSwatchColor(this.widgetConfig.chartConfig.from_color);
             this.colorPicker.on('selectedColor', lang.hitch(this,this.colorChangeEventHandler));
             this.aboveThresholdColorPicker.setSelectedSwatchColor(this.widgetConfig.chartConfig.thresholdColor);
