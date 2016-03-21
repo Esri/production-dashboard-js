@@ -89,11 +89,11 @@
                                       { value: "threestates", label: "Three States Indicator"}
                                       ],
           comparisonTypeSelectValuesStore : [
-                                      { value: "equal", label: "Equal"},
-                                      { value: "notequal", label: "Not Equal"},
-                                      { value: "greaterthan", label: "Greater Than"},
+                                      /*{ value: "equal", label: "Equal"},*/
+                                      /*{ value: "notequal", label: "Not Equal"},*/
+                                      /*{ value: "greaterthan", label: "Greater Than"},*/
                                       { value: "greaterthanorequal", label: "Greater Than Or Equal"},
-                                      { value: "lessthan", label: "Less Than"},                                      
+                                      /*{ value: "lessthan", label: "Less Than"},*/
                                       { value: "lessthanorequal", label: "Less Than Or Equal"}
                                       ],
 
@@ -211,7 +211,7 @@
                 highTargetValue: 0,
                 lowTargetValue: 0,
                 indicatorType:'twostates',
-                comparisonType: 'equal',
+                comparisonType: 'greaterthanorequal',
                 aboveValuesColor: 'green',
                 aboveValuesSymbol: "circle",
                 betweenValuesColor: 'orange',
