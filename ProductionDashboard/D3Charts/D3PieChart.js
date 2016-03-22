@@ -147,7 +147,7 @@ define([
                 tip.transition().style('opacity', .5);  
                 var percentage = (d.data.d/totalData)*100;          
                 if (context.labelContent.indexOf('data&label') >= 0 ){
-                    tip.html(d.data.value+' (<strong>'+percentage.toFixed(1) +'%</strong>)');                                                
+                    tip.html(d.data.value+'<br/>&nbsp;'+ d.data.d +'&nbsp;(<strong>'+percentage.toFixed(1) +'%</strong>)');                                                
                 } else if (context.labelContent.indexOf('data') >= 0) {
                     tip.html(percentage.toFixed(1) + "%");
                 } else if (context.labelContent.indexOf('label') >= 0){
@@ -465,7 +465,7 @@ define([
                         .text(function(d,i){
                             var percentage = (d.data.d/totalData)*100;    
                             if (self.labelContent.indexOf('data&label') >= 0 ){
-                                return d.data.value + ' (' + percentage.toFixed(1) +'%)';                                                
+                                return d.data.value + ' '+ d.data.d +' (' + percentage.toFixed(1) +'%)';                                                
                             } else if (self.labelContent.indexOf('data') >= 0) {
                                 return percentage.toFixed(1) + "%";
                             } else if (self.labelContent.indexOf('label') >= 0){
@@ -479,7 +479,7 @@ define([
 
         _relaxLabelCollision: function(labels,labelRadius, lines){
             if (labels == undefined)  return;
-            var   alpha = 0.5, spacing = 12;
+            var   alpha = 0.5, spacing = Math.round(parseInt(this.getBodyStylePropertyValue('font-size')));
             again = false;
             labels.each(function (d, i) {
             a = this;

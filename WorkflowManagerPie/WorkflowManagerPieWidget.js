@@ -121,7 +121,7 @@
 
                 self.data = event.data.map(lang.hitch(self,function(d){
                   var processedValue = self.processValue(d)
-                  var ret =  {d:processedValue , value:d.id + ' ' + processedValue} 
+                  var ret =  {d:processedValue , value:d.id } 
                   return ret;
                 })); 
              
@@ -145,7 +145,7 @@
 
                 self.data = event.data.map(lang.hitch(self,function(d){
                   var processedValue = self.processValue(d)
-                   var ret =  {d:processedValue , value:d.id + ' ' + processedValue, dsId: d.datasourceId} 
+                   var ret =  {d:processedValue , value:d.id , dsId: d.datasourceId} 
                    return ret;
                 }));             
                 self.visualizeIt();

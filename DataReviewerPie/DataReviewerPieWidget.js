@@ -69,7 +69,7 @@ define([
             this.widgetConfig.drsVariableValue.fieldname,
             lang.hitch(this,function(data){
               this.data = data.data.map(function(d){
-                return {d: d.count, value: d.variable + ' ' + d.count, id:d.id};
+                return {d: d.count, value: d.variable , id:d.id};
               });
               this.data = this.data.splice(1);
               this.visualizeIt();
