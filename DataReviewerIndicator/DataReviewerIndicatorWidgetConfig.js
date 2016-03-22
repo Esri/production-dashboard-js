@@ -18,6 +18,7 @@
   "dojo/_base/lang",
   "dojo/dom-style",
   "dijit/registry",
+  "dijit/Dialog",
   "dijit/ConfirmDialog",
   "dijit/layout/BorderContainer",
   "dijit/layout/TabContainer", 
@@ -49,6 +50,7 @@
              lang,
              domStyle,
              registry,
+             Dialog,
              ConfirmDialog,
              BorderContainer,
              TabContainer,
@@ -247,7 +249,8 @@
                 console.log("error="+ error.error.message);
                 this.widgetConfig.drsUrl = null;
                 this.validateConfig();
-                alert("Unable to resolve Data Reviewer Service URL");
+                this.showErrorDialog("Unable to resolve Data Reviewer Service URL");
+                this.connectBtn.cancel();
             }));
             this.drsRequest.on("drsRequest_intialized", function(data){
                 self.setSelectStore(self.drsVariableValue,self.drsRequest.drsDashboardFieldNames,"id","fieldname",(this.drsVariableValue != undefined)? this.drsVariableValue.id: null);
@@ -263,6 +266,7 @@
                   }
                   self.drsFilters  = this.drsFilters;
                 }
+                self.connectBtn.cancel();
                 self.validateConfig();
              });
              var self = lang.hitch(this);
@@ -297,6 +301,15 @@
             this.betweenValuesIndicator.fill_color = this.widgetConfig.betweenValuesColor;
             this.belowValuesIndicator.symbolStyle = this.widgetConfig.belowValuesSymbol;
             this.belowValuesIndicator.fill_color = this.widgetConfig.belowValuesColor;
+         },
+
+         showErrorDialog: function(errorMsg){
+            var errorDialog = new Dialog({
+              title: "Error Message",
+              style: "width: 300px;",
+              content: "<strong>"+errorMsg+"!</strong>"
+            });
+            errorDialog.show();
          },
 
           onAppeanranceTabShow: function(){
@@ -531,14 +544,13 @@
             this.validateConfig();            
           },
 
-          onAddFilterBtnClick: function(){
-            //alert('Add Filter clicked');
+          onAddFilterBtnClick: function(){          
             var item;
             if (this.filtersDG != undefined){
               var drsFieldName_item = this.drsFieldName.store.objectStore.get(this.drsFieldName.get("value"));           
               drsDistinctValues_item = this.drsDistinctValues.store.objectStore.get(this.drsDistinctValues.get("value"));             
               if (drsDistinctValues_item.id == 99){
-                alert('Invalid entry');
+                this.showErrorDialog('Invalid entry');
                 return;
               }
               this.addTofiltersGrid(drsFieldName_item,drsDistinctValues_item);

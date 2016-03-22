@@ -162,8 +162,6 @@
           },
 
           intializeAppearanceTab: function(){
-            this.isPercentageCB.set('checked',this.widgetConfig.chartConfig.is_percentage)
-            
             this.onSchedule_spw.selectedSymbol = this.widgetConfig.chartConfig.onscheduleSymbolStyle;
             this.onSchedule_spw.symbolFillColor = this.widgetConfig.chartConfig.onscheduleColor;
             this.onSchedule_spw.refresh();
@@ -234,8 +232,6 @@
               this.setQueryTabStatus(true);
               this.setApperanceTabStatus(true);
               this.connectBtn.cancel();
-              this.checkgroupDateBystatus();
-              this.checkValueFieldStatus();
               // persist                  
               this.validateConfig();   
             } else {             
@@ -450,27 +446,6 @@
             this.validateConfig();
           },
 
-          onIsPercentageCBClick: function(event){
-            this.widgetConfig.chartConfig.is_percentage = event.currentTarget.checked
-            if (this.widgetConfig.chartConfig.is_percentage){
-              this.onScheduleIndicator.indicator = '[value%]';
-              this.onScheduleIndicator.showChart();            
-              this.behindScheduleIndicator.indicator = '[value%]'
-              this.behindScheduleIndicator.showChart(); 
-              this.overdueIndicator.indicator = '[value%]'
-              this.overdueIndicator.showChart();   
-            } else {
-              this.onScheduleIndicator.indicator = '[value]';
-              this.onScheduleIndicator.showChart();            
-              this.behindScheduleIndicator.indicator = '[value]'
-              this.behindScheduleIndicator.showChart(); 
-              this.overdueIndicator.indicator = '[value]'
-              this.overdueIndicator.showChart();   
-            }
-            
-            this.validateConfig(); 
-          },
-       
           fillFieldNames: function(queryId) {
             this.resetSelectStore(this.dueDateField);
             this.resetSelectStore(this.startDateField);

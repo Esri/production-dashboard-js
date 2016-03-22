@@ -17,6 +17,7 @@
   "dojo/_base/declare",
   "dojo/_base/lang",
   "dojo/dom-style",
+  "dijit/Dialog",
   "dijit/ConfirmDialog",
   "dijit/registry",
   "dijit/layout/TabContainer",
@@ -48,6 +49,7 @@
 ], function (declare, 
              lang,
              domStyle,
+             Dialog,
              ConfirmDialog,
              registry,
              TabContainer,
@@ -284,7 +286,8 @@
                 console.log("error="+ error.error.message);
                 this.widgetConfig.drsUrl = null;
                 this.validateConfig();
-                alert("Unable to resolve Data Reviewer Service URL");
+                this.showErrorDialog("Unable to resolve Data Reviewer Service URL");
+                this.connectBtn.cancel();
              }));
             this.drsRequest.on("drsRequest_intialized", function(data){
                 self.setSelectStore(self.drsVariableValue,self.drsRequest.drsDashboardFieldNames,"id","fieldname",(this.drsVariableValue != undefined)? this.drsVariableValue.id: null);
@@ -300,10 +303,20 @@
                   }
                   self.drsFilters  = this.drsFilters;
                 }
+                self.connectBtn.cancel();
                 self.validateConfig();
              });
              var self = lang.hitch(this);
              this.drsRequest.initialize();
+          },
+
+          showErrorDialog: function(errorMsg){
+            var errorDialog = new Dialog({
+              title: "Error Message",
+              style: "width: 300px;",
+              content: "<strong>"+errorMsg+"!</strong>"
+            });
+            errorDialog.show();
           },
 
           filterGridDblclickHandler:  function(e){
@@ -460,7 +473,7 @@
               var drsFieldName_item = this.drsFieldName.store.objectStore.get(this.drsFieldName.get("value"));           
               drsDistinctValues_item = this.drsDistinctValues.store.objectStore.get(this.drsDistinctValues.get("value"));             
               if (drsDistinctValues_item.id == 99){
-                alert('Invalid entry');
+                this.showErrorDialog('Invalid entry');
                 return;
               }
               this.addTofiltersGrid(drsFieldName_item,drsDistinctValues_item);
