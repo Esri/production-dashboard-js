@@ -65,11 +65,11 @@ define([
   		templateString: '<span class="${baseClass}">' +
       						    '<span  class="wmxDropDownButton" data-dojo-type="dijit/form/DropDownButton" data-dojo-attach-point="selectedNodeButton">' +
           						   '<span ><span class="wmxLabel">Queries</span></span>' +          						
-          						   '<span data-dojo-type="dijit/layout/ContentPane" class="wmxQueriesTreeContainer"><label data-dojo-attach-point="status">${initialStatusMsg}</label><span data-dojo-attach-point="treeContainer"></span></span>' +
+          						   '<span data-dojo-type="dijit/layout/ContentPane" class="wmxQueriesTreeContainer" ><label data-dojo-attach-point="status">${initialStatusMsg}</label><span data-dojo-attach-point="treeContainer"></span></span>' +
         					     '</span>' + 
     					       '</span>',
-      //<!--span data-dojo-attach-point="tree"></span-->
-  		initialStatusMsg: 'Loading...',
+      
+      initialStatusMsg: 'Loading...',
 
   		wmxRequest: null,
 
