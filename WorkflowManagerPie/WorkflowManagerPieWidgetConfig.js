@@ -181,6 +181,7 @@
             var status = (this.widgetConfig.chartConfig.placeWedgeLabel == 'onWedgeHover')
             this.onWedgeHoverRB.set('checked', Boolean(status));
             this.aroundPieRB.set('checked', !Boolean(status));  
+            this.crpw.setSelectedColorRamp(this.widgetConfig.chartConfig.colorRamp)
             this.crpw.on('selectedColorRamp',lang.hitch(this,this.colorRampChangeEventHandler));
             this.widgetConfig.chartConfig.colorRamp = this.crpw.getSelectedColorRamp();
             this.previewChart();                 

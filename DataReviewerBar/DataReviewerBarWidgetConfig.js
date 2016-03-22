@@ -269,6 +269,7 @@
         this.wraplabelCB.set('checked', this.widgetConfig.chartConfig.wrapHAxisText);
         this.showVerticalAxisCB.set('checked', this.widgetConfig.chartConfig.show_vertical_axis);           
         this.setSelectStore(this.labelOrientation,this.labelOrientationSelectValuesStore,"value","label",this.widgetConfig.chartConfig.horizontal_ticks_orientation);        
+        this.crpw.setSelectedColorRamp(this.widgetConfig.chartConfig.colorRamp);
         this.crpw.on('selectedColorRamp',lang.hitch(this,this.colorRampChangeEventHandler));
         this.widgetConfig.chartConfig.colorRamp = this.crpw.getSelectedColorRamp();
      },

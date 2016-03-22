@@ -17,11 +17,19 @@
     }    
   };
 
+  function setColorRamp(colorRamp){
+    if (crpw != undefined){
+        crpw.setSelectedColorRamp(colorRamp);
+    }
+  }
+
   </script> 
   <script src="http://js.arcgis.com/3.16/"></script>  
   <body class="claro">
     <h1>Color Ramp Picker Widget Declarative Testing</h1>
     <span  data-dojo-id="crpw" data-dojo-type="esri/productiondashboard/ColorRampPickerWidget"></span>           
+    <br/>
+    <span  data-dojo-id="crpw1" data-dojo-type="esri/productiondashboard/ColorRampPickerWidget"></span><button onclick="setColorRamp(crpw1.getSelectedColorRamp())">Set Color Ramp above</button>           
   </body>
 </html>
 </html>

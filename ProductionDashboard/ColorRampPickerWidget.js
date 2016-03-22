@@ -81,9 +81,8 @@ define([
         postCreate: function(){
           this.inherited(arguments);
           this.colorRampsSelect.on('change', lang.hitch(this,function(e){
-          	  //alert('received a change event!')
-          	  this.selectedRamp = this.colorRamps[e]
-          	  this.emit("selectedColorRamp", this.selectedRamp);
+            this.selectedRamp = this.colorRamps[e]
+            this.emit("selectedColorRamp", this.selectedRamp);
           }));
           this.emit("selectedColorRamp", this.selectedRamp);
       	},
@@ -106,6 +105,28 @@ define([
 
         getSelectedColorRamp:function(){
         	return this.selectedRamp;
+        }, 
+
+        setSelectedColorRamp:function(colorRamp){
+          if (colorRamp == undefined) return;
+          if (colorRamp instanceof Array &&
+              colorRamp.length == this.colorRamps[0].length) {
+               for(var i=0;i<this.colorRamps.length;i++){
+                 var found = true;                 
+                 for(var j=0;j<this.colorRamps[i].length;j++){
+                    if (colorRamp[j] != this.colorRamps[i][j]){
+                       found = false
+                       break;
+                    }
+                 }
+                 if (found){
+                   this.selectedRamp = this.colorRamps[i];
+                   this.colorRampsSelect.set('value', String(i));
+                   break;
+                 }
+               }
+          }
         }
+
   	});
 });
