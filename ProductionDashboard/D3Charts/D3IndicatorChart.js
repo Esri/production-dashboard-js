@@ -277,7 +277,7 @@
       return svg.append('text')
             .attr('id', this.id)
             .attr('x', ix)
-            .attr('y',iy)               
+            .attr('y',iy )               
             //.attr('font-family','sans-serif')
             .attr('font-size', fontSize + 'px')
             .attr('font-weight', 900 )
@@ -308,7 +308,7 @@
         
 
       var max_indicator_length = w,
-          fontSize = 1.5 * Math.round(max_indicator_length / this.indicator.toString().length);
+          fontSize = Math.round(max_indicator_length / this.indicator.toString().length);
 
       var ix = x + (1.5 * w),
           iy = y + (0.5 * h) + fontSize/2 ;    
@@ -403,7 +403,7 @@
               
 
       var max_indicator_length = w,
-          fontSize = 1.5 * Math.round(max_indicator_length / this.indicator.toString().length); 
+          fontSize = Math.round(max_indicator_length / this.indicator.toString().length); 
 
       var ix = x + (1.5 * w) ,
           iy = y + (0.5 * h) + fontSize/2;      
@@ -449,7 +449,7 @@
           
 
        var max_indicator_length = w,
-          fontSize = 1.5 * Math.round(max_indicator_length / this.indicator.toString().length);
+          fontSize = Math.round(max_indicator_length / this.indicator.toString().length);
 
       var ix = x + (1.5 * w),
           iy = y + (0.5 * h) + fontSize/2 ;  
@@ -571,7 +571,7 @@
           
 
        var max_indicator_length = w,
-          fontSize = 1.5 * Math.round(max_indicator_length / this.indicator.toString().length);
+          fontSize = Math.round(max_indicator_length / this.indicator.toString().length);
 
       var ix = x + (1.5 * w),
           iy = y + (0.5 * h) + fontSize/2 ;  
@@ -614,7 +614,7 @@
           
 
        var max_indicator_length = w,
-          fontSize = 1.5 * Math.round(max_indicator_length / this.indicator.toString().length);
+          fontSize = Math.round(max_indicator_length / this.indicator.toString().length);
 
       var ix = x + (1.5 * w),
           iy = y + (0.5 * h) + fontSize/2 ;  
