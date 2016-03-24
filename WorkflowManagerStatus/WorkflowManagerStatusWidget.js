@@ -30,7 +30,7 @@ define([
   return declare("WorkflowManagerStatusWidget", [_WidgetBase, _TemplatedMixin, WidgetProxy], {    
 
     templateString: '<div data-dojo-attach-point="chartPreview" style="overflow:hidden;"></div>',
-    margin : {top: 0, right: 0, bottom: 0, left: 0},   
+    margin : {top: 0, right: 0, bottom: 05, left: 0}, 
     wmxRequest: null,
     wmxJSChartDS : null,
     widgetConfig: null,

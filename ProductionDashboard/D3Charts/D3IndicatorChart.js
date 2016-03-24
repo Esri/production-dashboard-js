@@ -307,7 +307,7 @@
           h = height - this.margin.top - this.margin.bottom;
         
 
-      var max_indicator_length = w,
+      var max_indicator_length = d3.min([h,w]),
           fontSize = Math.round(max_indicator_length / this.indicator.toString().length);
 
       var ix = x + (1.5 * w),
@@ -352,7 +352,7 @@
           h = height - this.margin.top - this.margin.bottom;
         
 
-       var max_indicator_length = w,
+       var max_indicator_length = d3.min([h,w]),
           fontSize = 1.5 * Math.round(max_indicator_length / this.indicator.toString().length);
 
       var ix = x + (1.5 * w),
@@ -402,7 +402,7 @@
           r = d3.min([w,h]) / 2;
               
 
-      var max_indicator_length = w,
+      var max_indicator_length = d3.min([h,w]),
           fontSize = Math.round(max_indicator_length / this.indicator.toString().length); 
 
       var ix = x + (1.5 * w) ,
@@ -448,7 +448,7 @@
           cy = y + (0.5 * h);
           
 
-       var max_indicator_length = w,
+       var max_indicator_length = d3.min([h,w]),
           fontSize = Math.round(max_indicator_length / this.indicator.toString().length);
 
       var ix = x + (1.5 * w),
@@ -489,7 +489,7 @@
           h = height - this.margin.top - this.margin.bottom;
           
 
-       var max_indicator_length = w,
+       var max_indicator_length = d3.min([h,w]),
           fontSize = 1.5 * Math.round(max_indicator_length / this.indicator.toString().length);
 
       var ix = x + (1.5 * w),
@@ -530,7 +530,7 @@
           h = height - this.margin.top - this.margin.bottom;
           
 
-       var max_indicator_length = w,
+       var max_indicator_length = d3.min([h,w]),
           fontSize = 1.5 * Math.round(max_indicator_length / this.indicator.toString().length);
 
       var ix = x + (1.5 * w),
@@ -570,7 +570,7 @@
           h = height - this.margin.top - this.margin.bottom;
           
 
-       var max_indicator_length = w,
+       var max_indicator_length = d3.min([h,w]),
           fontSize = Math.round(max_indicator_length / this.indicator.toString().length);
 
       var ix = x + (1.5 * w),
@@ -613,7 +613,7 @@
           r = d3.min([w,h]) / 2;
           
 
-       var max_indicator_length = w,
+       var max_indicator_length = d3.min([h,w]),
           fontSize = Math.round(max_indicator_length / this.indicator.toString().length);
 
       var ix = x + (1.5 * w),

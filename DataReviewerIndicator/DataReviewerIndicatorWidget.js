@@ -28,7 +28,7 @@ define([
 
   return declare("DataReviewerIndicatorWidget", [_WidgetBase, _TemplatedMixin, WidgetProxy], {      
     templateString: '<div data-dojo-attach-point="chartPreview"></div>',
-    margin : {top: 03, right: 02, bottom: 0, left: 02}, 
+    margin : {top: 0, right: 0, bottom: 05, left: 0}, 
     drsRequest: null,
     widgetConfig: null,
     data: null,
@@ -43,6 +43,7 @@ define([
     
     visualizeIt:function (){         
       var self = lang.hitch(this);
+       this.chart.margin = this.margin;
        this.chart.fill_color = this.data[0].symbolColor;
        this.chart.symbolStyle = this.data[0].symboleStyle;
        this.chart.indicator = this.data[0].value;
