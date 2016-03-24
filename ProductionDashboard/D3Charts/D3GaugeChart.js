@@ -524,7 +524,9 @@
 
             var  gaugeData = this._prepareGaugeData(data,scale); 
 
-            var currentfontsize =  Math.round(parseInt(this.getBodyStylePropertyValue('font-size')));
+            var currentfontsize =  Math.round(parseInt(this.getBodyStylePropertyValue('font-size'))),
+                currentfontfamily = this.getBodyStylePropertyValue('font-family'),
+                currentfontweight = Math.round(parseInt(this.getBodyStylePropertyValue('font-weight'))) ;
 
             var minLeftMargin =  this._calculateMinimumLeftMargin(gaugeData,currentfontsize);
 
@@ -553,6 +555,9 @@
             var tip = d3.select(this.parent()).append('div')            
                     .attr('id', "tooltip"+this.svgId) 
                     .attr('class', 'D3GaugeTip')
+                    .style('font-family', currentfontfamily)
+                    .style('font-weight', currentfontweight)
+                    .style('font-size', currentfontsize)
                     .style('opacity', 0);            
 
 
@@ -711,10 +716,6 @@
                         .text(function(d){
                         return self.labelFormat(d.tick);
                     });
-
-                /*gaugeLabels.selectAll('text')
-                    .attr("transform", "rotate(-65)" );
-*/
 
             }
         },

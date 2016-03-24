@@ -91,9 +91,15 @@ define([
             this.clearContent();
             
             var self = lang.hitch(this);
+
             var cMargins =  {top: this.margin.top, right: this.margin.right, bottom: this.margin.bottom, left: this.margin.right};            
+
             var width = Math.floor(this.svgWidth),
                 height = Math.floor(this.svgHeight);
+
+            var currentfontsize =  Math.round(parseInt(this.getBodyStylePropertyValue('font-size'))),
+                currentfontfamily = this.getBodyStylePropertyValue('font-family'),
+                currentfontweight = Math.round(parseInt(this.getBodyStylePropertyValue('font-weight'))) ;
 
             var xCenter =  Math.floor(width / 2),
                 yCenter = Math.floor(height / 2), 
@@ -135,8 +141,10 @@ define([
                 .append('div')
                 .attr('id', this.svgId)
                 .attr('class', 'PieChart_Label')                
+                .style('font-family', currentfontfamily)
+                .style('font-weight', currentfontweight)
+                .style('font-size', currentfontsize)
                 .style('opacity', 0);
-             
 
             var angle = function(d) {
                 var a = (d.startAngle + d.endAngle) * 90 / Math.PI - 90;

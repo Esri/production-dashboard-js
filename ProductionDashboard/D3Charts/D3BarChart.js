@@ -180,7 +180,9 @@
 
             var currentMargin = {top: this.margin.top, right: this.margin.right, bottom: this.margin.bottom, left: this.margin.left};
 
-            var currentfontsize =  Math.round(parseInt(this.getBodyStylePropertyValue('font-size')));
+            var currentfontsize =  Math.round(parseInt(this.getBodyStylePropertyValue('font-size'))), 
+                currentfontfamily = this.getBodyStylePropertyValue('font-family'),
+                currentfontweight = Math.round(parseInt(this.getBodyStylePropertyValue('font-weight'))) ;
 
             var show_horizontal_axis = this.showHorizontalAxis,
                 show_vertical_axis = this.showVerticalAxis,              
@@ -252,6 +254,9 @@
             var tooltip = d3.select('body').append('div')
                             .attr('id', this.svgId+'tooltip')                        
                             .style('position', 'absolute')
+                            .style('font-family', currentfontfamily)
+                            .style('font-weight', currentfontweight)
+                            .style('font-size', currentfontsize)
                             .style('padding', '0 10px')
                             .style('background', 'white')
                             .style('opacity', 0);
