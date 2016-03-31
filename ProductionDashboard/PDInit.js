@@ -18,7 +18,7 @@
 ], function(declare){
   var PDInit = declare(null, {});
   PDInit.WMX_SERVICE       = { 
-                             url: 'https://pmdemo.esri.com/server/rest/services/WMX/WMServer',
+                             url: 'https://workflowsample.esri.com/arcgis/rest/services/Workflow/WMServer',
                              username: 'demo1'
                             };
   PDInit.DRS_SERVICE      = {
