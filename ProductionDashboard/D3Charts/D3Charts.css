@@ -13,10 +13,10 @@
 13  * limitations under the License. 
 14  */
 
-@import url(https://fonts.googleapis.com/css?family=Chewy);
+@import url(https://fonts.googleapis.com/css?family=Cantarell);
 
 svg {
-  font-family: 'Chewy', cursive;
+  font-family: 'Cantarell', cursive;
   font-weight: 400;
   font-size: .8em;
 }
