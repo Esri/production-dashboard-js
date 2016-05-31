@@ -2,7 +2,7 @@
   "type": "Widget",
   "title": "Data Reviewer Gauge Chart",
   "description": "",
-  "thumbnailPath": "DataReviewerWidgetIcon.png",
+  "thumbnailPath": "DataReviewerGaugeWidgetIcon.png",
   "useDataFromView": true,
   "runtime": {
     "path": "DataReviewerGaugeWidget.html"
