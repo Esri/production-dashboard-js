@@ -34,6 +34,13 @@ define([
         
         sendRequest: function(inputParams, appendURL, successCallBack, errorCallBack) {
             var requestUrl = (this.proxyURL) ? this.proxyURL + "?" + this.url : this.url;
+            var token = this.getTokenParam()
+            if (token){
+                requestUrl = requestUrl.replace('token='+token, '')
+                if (requestUrl.lastIndexOf('?') == requestUrl.length-1)
+                    requestUrl = requestUrl.replace('?', '')
+                this.token = token
+            }
             requestUrl += appendURL;
             inputParams.f = "json";
             if (this.token) {
@@ -50,7 +57,20 @@ define([
             }, { useProxy: (this.proxyURL && (this.proxURL != "")) });
             request.then(successCallBack, errorCallBack);
         },
-        
+
+
+        getTokenParam: function() {
+            var params = {};
+            var search =  this.url.slice( this.url.indexOf( '?' ) + 1 );
+            var definitions = search.split( '&' );
+
+            definitions.forEach( function( val, key ) {
+                var parts = val.split( '=', 2 );
+                params[ parts[ 0 ] ] = parts[ 1 ];
+            } );
+           return ( "token" && "token" in params ) ? params[ "token" ] : undefined;
+        },
+
         formatDomainUsername: function(username) {
             if (username && username.length > 0)
             {
@@ -59,7 +79,6 @@ define([
             }
             return username;
         }
-
 	
 	});
 });
