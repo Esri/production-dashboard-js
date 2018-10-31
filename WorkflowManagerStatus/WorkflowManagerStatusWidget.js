@@ -19,13 +19,14 @@ define([
   "dijit/_WidgetBase",
   "dijit/_TemplatedMixin",
   "esri/opsdashboard/WidgetProxy",
+  "esri/productiondashboard/PDInit",
   "esri/productiondashboard/WMXRequest",
   "esri/productiondashboard/WMXJobStatusChartDatasource",
   "esri/tasks/query",
   "esri/productiondashboard/D3Charts/D3IndicatorChart",
   "dojo/domReady!"  
  
-], function (declare, lang, _WidgetBase, _TemplatedMixin, WidgetProxy,WMXRequest,WMXJSChartDS,Query,pdChart) {
+], function (declare, lang, _WidgetBase, _TemplatedMixin, WidgetProxy, PDInit, WMXRequest,WMXJSChartDS,Query,pdChart) {
 
   return declare("WorkflowManagerStatusWidget", [_WidgetBase, _TemplatedMixin, WidgetProxy], {    
 
@@ -87,7 +88,7 @@ define([
       this.widgetConfig = this.dataSourceConfig.widgetConfig;
 
       // instanciate a wwmxRequest
-      this.wmxRequest = new WMXRequest({url:this.widgetConfig.wmxUrl});
+      this.wmxRequest = new WMXRequest({url:this.widgetConfig.wmxUrl, proxyURL: PDInit.WmxProxy});
       // instanciate a WMXChartDS
       this.wmxJSChartDS = new WMXJSChartDS({
                        wmxRequest: this.wmxRequest,

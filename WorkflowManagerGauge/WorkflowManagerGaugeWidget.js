@@ -21,11 +21,12 @@
   "dijit/_TemplatedMixin",  
   "esri/opsdashboard/WidgetProxy",
   "esri/productiondashboard/WMXEnum",
+  "esri/productiondashboard/PDInit",
   "esri/productiondashboard/WMXRequest",
   "esri/productiondashboard/WMXChartDatasource",
   "esri/productiondashboard/D3Charts/D3GaugeChart",
   "dojo/domReady!"  
-], function (declare, lang, _WidgetBase, _TemplatedMixin,  WidgetProxy, WMXEnum, WMXRequest, WMXChartDS,  pdChart) {
+], function (declare, lang, _WidgetBase, _TemplatedMixin,  WidgetProxy, WMXEnum, PDInit, WMXRequest, WMXChartDS,  pdChart) {
 
   return declare("WorkflowManagerGaugeWidget", [_WidgetBase, _TemplatedMixin, WidgetProxy], {    
     templateString: '<div data-dojo-attach-point="chartPreview" style="overflow:hidden;"></div>',    
@@ -81,7 +82,7 @@
            return;
       this.datasource =  dataSourceProxy;
       this.widgetConfig = dataSourceConfig.widgetConfig;
-      this.wmxRequest = new WMXRequest({url:this.widgetConfig.wmxUrl});
+      this.wmxRequest = new WMXRequest({url:this.widgetConfig.wmxUrl, proxyURL: PDInit.WmxProxy});
       var self = lang.hitch(this);
       if (!this.widgetConfig.addDataGroupping && !this.widgetConfig.addMapIntegration){
            this.wmxRequest.runQuery(this.widgetConfig.queryId,

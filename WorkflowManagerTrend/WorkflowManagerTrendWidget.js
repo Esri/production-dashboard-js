@@ -21,11 +21,12 @@
   "dijit/_TemplatedMixin",  
   "esri/opsdashboard/WidgetProxy",
   "esri/productiondashboard/WMXEnum",
+  "esri/productiondashboard/PDInit",
   "esri/productiondashboard/WMXRequest",
   "esri/productiondashboard/WMXChartDatasource",
   "esri/productiondashboard/D3Charts/D3TrendChart",
   "dojo/domReady!"  
-], function (declare, lang, _WidgetBase, _TemplatedMixin,  WidgetProxy, WMXEnum, WMXRequest, WMXChartDS, pdChart) {
+], function (declare, lang, _WidgetBase, _TemplatedMixin,  WidgetProxy, WMXEnum, PDInit, WMXRequest, WMXChartDS, pdChart) {
 
   return declare("WorkflowManagerTrendWidget", [_WidgetBase, _TemplatedMixin, WidgetProxy], {        
     templateString: '<div data-dojo-attach-point="chartPreview"></div>',
@@ -99,7 +100,7 @@
       this.dataSourceConfig = dataSourceConfig;
       this.widgetConfig = this.dataSourceConfig.widgetConfig;
       
-      this.wmxRequest = new WMXRequest({url:this.widgetConfig.wmxUrl});
+      this.wmxRequest = new WMXRequest({url:this.widgetConfig.wmxUrl, proxyURL: PDInit.WmxProxy});
       
       this.wmxChartDS = new WMXChartDS({
                        wmxRequest: this.wmxRequest, 

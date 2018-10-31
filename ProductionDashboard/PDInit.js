@@ -18,9 +18,10 @@
 ], function(declare){
   var PDInit = declare(null, {});
   PDInit.WMX_SERVICE       = { 
-                             url: 'https://workflowsample.esri.com/arcgis/rest/services/Workflow/WMServer',
-                             username: 'demo1'
+                             url: 'https://michphase2-5.esri.com/arcgis/rest/services/Michigan/WMServer',
+                             username: 'wmx1051'
                             };
+  PDInit.WmxProxy         = 'http://michphase2-5.esri.com/DotNet/proxy.ashx';
   PDInit.DRS_SERVICE      = {
                               url: 'https://datareviewer.arcgisonline.com/arcgis/rest/services/Samples/reviewerDashboard/MapServer'                             
                             };

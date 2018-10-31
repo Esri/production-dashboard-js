@@ -153,7 +153,7 @@
             if (this.widgetConfig.wmxUrl == ""){
               this.setConnectionStatus(false, "No WMX Service Url")
             } else {
-              var request = new WMXRequest({url:this.widgetConfig.wmxUrl});
+              var request = new WMXRequest({url:this.widgetConfig.wmxUrl, proxyURL: PDInit.WmxProxy});
               this.WMXQueriesTree.wmxRequest = request;
               this.WMXQueriesTree.load();                        
             }
@@ -460,7 +460,7 @@
           fillFieldNames: function(queryId) {            
             this.resetSelectStore(this.valueField);
             var self = lang.hitch(this);            
-            var request = new WMXRequest({url:this.widgetConfig.wmxUrl});
+            var request = new WMXRequest({url:this.widgetConfig.wmxUrl, proxyURL: PDInit.WmxProxy});
             request.runQuery(queryId,
                 this.widgetConfig.userName,
                 function(data){

@@ -24,19 +24,19 @@
 	"esri/tasks/datareviewer/ReviewerFilters"
 ],function (declare,lang, Array, Deffered, Evented, ReviewerLifecycle, DashboardTask,ReviewerFilters) {
  return declare("esri.productiondashboard.DRSRequest",[Evented], {
-  url:null,
+    url:null,
  	drsDashboardFieldNames: null,
-  drsDashboardCustomFieldNames: null,
+    drsDashboardCustomFieldNames: null,
  	reviewerSessions: null,
-  successCallBack: null,
-  errorCallBack: null,
+    successCallBack: null,
+    errorCallBack: null,
 
 	constructor: function(args){
-    lang.mixin(this, args);
-   	this.disableClientCaching = true;
-    this.dashboardTask = new DashboardTask(this.url);
-    this.attach_event_error(); 
-    this.attach_event_dashboard_result_complete(); 
+     lang.mixin(this, args);
+   	 this.disableClientCaching = true;
+     this.dashboardTask = new DashboardTask(this.url);
+     this.attach_event_error();
+     this.attach_event_dashboard_result_complete();
 	},
   
   attach_event_error: function(){

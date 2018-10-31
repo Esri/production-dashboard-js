@@ -20,11 +20,12 @@
   "dijit/_TemplatedMixin",  
   "esri/opsdashboard/WidgetProxy",
   "esri/productiondashboard/WMXEnum",
+  "esri/productiondashboard/PDInit",
   "esri/productiondashboard/WMXRequest",
   "esri/productiondashboard/WMXChartDatasource",
   "esri/productiondashboard/D3Charts/D3PieChart",
   "dojo/domReady!"  
-], function (declare, lang, _WidgetBase, _TemplatedMixin,  WidgetProxy, WMXEnum, WMXRequest, WMXChartDS, pdChart) {
+], function (declare, lang, _WidgetBase, _TemplatedMixin,  WidgetProxy, WMXEnum, PDInit, WMXRequest, WMXChartDS, pdChart) {
 
   return declare("WorkflowManagerBarWidget", [_WidgetBase, _TemplatedMixin, WidgetProxy], {      
     templateString: '<div data-dojo-attach-point="chartPreview"  style="height:100%; width:100%;overflow:hidden;"></div>',
@@ -68,7 +69,7 @@
       this.dataSourceConfig = dataSourceConfig;
       this.widgetConfig = dataSourceConfig.widgetConfig;
       
-      this.wmxRequest = new WMXRequest({url:this.widgetConfig.wmxUrl});
+      this.wmxRequest = new WMXRequest({url:this.widgetConfig.wmxUrl, proxyURL: PDInit.WmxProxy});
       
        if (!this.widgetConfig.addDataGroupping && !this.widgetConfig.addMapIntegration){
            this.wmxRequest.runQuery(this.widgetConfig.queryId,

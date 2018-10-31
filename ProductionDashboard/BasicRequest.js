@@ -15,8 +15,9 @@
 
 define([
 		"dojo/_base/declare",
+		"esri/config",
 		"esri/request"
-],function(declare,esriRequest)
+],function(declare,esriConfig,esriRequest)
 {
 	return declare("esri.productiondashboard.BasicRequest", [],  {
 
@@ -33,7 +34,15 @@ define([
         },
         
         sendRequest: function(inputParams, appendURL, successCallBack, errorCallBack) {
-            var requestUrl = (this.proxyURL) ? this.proxyURL + "?" + this.url : this.url;
+            //var requestUrl = (this.proxyURL) ? this.proxyURL + "?" + this.url : this.url;
+            var useProxy = (this.proxyURL && (this.proxURL != ""))
+
+            esriConfig.defaults.io.proxyUrl = null
+            if (useProxy) {
+                esriConfig.defaults.io.proxyUrl = this.proxyURL
+            }
+
+            var requestUrl = this.url
             var token = this.getTokenParam()
             if (token){
                 requestUrl = requestUrl.replace('token='+token, '')
@@ -47,8 +56,8 @@ define([
                 inputParams.token = this.token;
             }
             if (this.disableClientCaching) {
-                inputParams._ts = new Date().getTime();
-            }        
+               inputParams._ts = new Date().getTime();
+            }
             var request = esriRequest({
                 url: requestUrl,                
                 content: inputParams,
